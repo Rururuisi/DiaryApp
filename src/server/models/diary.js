@@ -23,7 +23,7 @@ const diarySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    time: {
+    last_modified_time: {
         type: String,
         required: true,
     },
