@@ -1,0 +1,40 @@
+{
+  "diary_entries": [
+    {
+      "title": "A Day at the Park",
+      "date": "07/31/2022",
+      "weather": "sunny",
+      "content": "Today was a beautiful day, so I decided to spend some time at the park. \nThe sun was shining, and there was a gentle breeze. I had a lovely picnic under a shady tree and enjoyed watching kids play on the playground. \nIt was a relaxing and refreshing day."
+    },
+    {
+      "title": "Rainy Day Adventures",
+      "date": "08/03/2022",
+      "weather": "rainy",
+      "content": "Despite the rainy weather, I decided to embrace the day and have some indoor adventures. I spent the morning reading my favorite book while sipping on hot tea. In the afternoon, I painted a beautiful landscape inspired by the raindrops falling outside. The sound of rain on my window created a cozy atmosphere that made the day magical."
+    },
+    {
+      "title": "Exploring the City",
+      "date": "09/10/2022",
+      "weather": "sunnyWithCloud",
+      "content": "Today, I went on an adventure to explore the city's hidden gems. I visited quaint cafes, wandered through art galleries, and discovered charming streets filled with street performers. The weather was perfect - not too hot, not too cold. It was a day filled with new experiences and a sense of wonder."
+    },
+    {
+      "title": "Beach Day Bliss",
+      "date": "10/17/2022",
+      "weather": "sunny",
+      "content": "Spent the entire day at the beach, soaking up the sun and enjoying the refreshing ocean breeze. The water was crystal clear, and the waves were perfect for swimming and surfing. I built sandcastles, collected seashells, and had a delightful picnic by the shore. The beach day bliss was just what I needed to recharge and relax."
+    },
+    {
+      "title": "Cozy Evening by the Fireplace",
+      "date": "02/14/2023",
+      "weather": "rainyWithSun",
+      "content": "As the evenings are getting cooler, I decided to have a cozy night at home. \nI lit up the fireplace, snuggled under a warm blanket, and watched my favorite movies. The crackling sound of the fire and the soft glow created a comforting ambiance. \nIt was the perfect way to end the day and welcome the upcoming autumn season."
+    },
+    {
+      "title": "Short Diary",
+      "date": "08/01/2023",
+      "weather": "sunny",
+      "content": "For testing purpose, this diary has content that less than 150 characters. Everything can be seen on the thumbnail diary card. "
+    }
+  ]
+}

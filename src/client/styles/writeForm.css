@@ -1,0 +1,82 @@
+.dateTopDisplay {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.WriteForm label,
+.WriteForm input,
+.writeForm textarea {
+  color: rgb(83, 83, 83);
+  box-sizing: border-box;
+}
+
+.WriteForm label {
+  width: 10%;
+  font-size: 18px;
+}
+
+.WriteForm input {
+  width: 85%;
+  border: none;
+  font-size: 20px;
+}
+
+.WriteForm input:focus {
+  outline: none;
+}
+
+.WriteForm hr {
+  margin-bottom: 20px;
+  height: 1px;
+  background-color: #dadada;
+  border: none;
+}
+
+.WriteForm div {
+  margin-bottom: 20px;
+}
+
+#content {
+  width: 100%;
+  min-height: 65vh;
+  height: 100%;
+  border: none;
+  resize: none;
+  font-size: 20px;
+  color: rgb(83, 83, 83);
+}
+
+#content:focus {
+  outline: none;
+}
+
+#weather {
+  font-size: 20px;
+  border: none;
+}
+
+#weather:focus {
+  outline: none;
+}
+
+.WriteForm section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  padding-right: 20px;
+}
+
+#date {
+  font-size: 18px;
+}
+
+.WriteForm section input {
+  width: fit-content;
+}

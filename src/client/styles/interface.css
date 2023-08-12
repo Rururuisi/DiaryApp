@@ -1,0 +1,18 @@
+.TabContext {
+  width: 100%;
+}
+
+.TabList {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.3);
+  /* border-radius: 2rem 2rem 0 0; */
+}
+
+.Tab {
+  width: 20%;
+}
