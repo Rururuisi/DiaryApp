@@ -4,7 +4,9 @@ if (process.env.NODE_ENV !== "production") {
 
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const session = require("express-session");
+const Diary = require("./models/diary");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -28,8 +30,24 @@ const sessionOptions = {
 };
 
 app.use(session(sessionOptions));
+app.use(bodyParser.json());
+
+// app.use((req, res, next) => {
+//     res.setHeader("Access-Control-Allow-Origin", "*");
+//     res.setHeader(
+//         "Access-Control-Allow-Headers",
+//         "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+//     );
+//     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+//     next();
+// });
 
 // ----------------------Routing-----------------------
+
+app.post("/diary/new", (req, res) => {
+    console.log(req.body);
+    res.json("Diary Saved! ");
+});
 
 app.get("/api", (req, res) => {
     res.json({

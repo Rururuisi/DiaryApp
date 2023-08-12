@@ -20,8 +20,8 @@ const getCurrentDateObj = () => {
     const Day = ["Sun.", "Mon.", "Tue.", "Wed.", "Thurs.", "Fri.", "Sat."];
     const currentDate = new Date();
     const year = `${currentDate.getFullYear()}`;
-    const month = `${(currentDate.getMonth() + 1).toString().padStart(2, "0")}`;
-    const date = `${currentDate.getDate().toString().padStart(2, "0")}`;
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+    const date = currentDate.getDate().toString().padStart(2, "0");
     const day = `${Day[currentDate.getDay()]}`;
     return { year, month, date, weekday: day };
 };
@@ -29,7 +29,7 @@ const getCurrentDateObj = () => {
 const getCurrentTimeStr = () => {
     const currentDate = new Date();
     const hours = currentDate.getHours();
-    const minutes = currentDate.getMinutes();
+    const minutes = currentDate.getMinutes().toString().padStart(2, "0");
     return `${hours}:${minutes}`;
 };
 

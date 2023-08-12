@@ -18,75 +18,79 @@ import WriteForm from "./components/WriteForm";
 import AddDiaryIcon from "./components/AddDiaryIcon";
 
 const StyledTab = styled(Tab)({
-  minWidth: 0,
-  height: 60,
+    minWidth: 0,
+    height: 60,
 });
 
 export default function App() {
-  const [value, setValue] = useState("timeline");
+    const [value, setValue] = useState("timeline");
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
-  return (
-    <div>
-      <TabContext className="TabContext" value={value}>
-        <TabList
-          sx={{
-            zIndex: 1,
-            backgroundColor: (theme) => theme.palette.ternary.main,
-            "& .MuiSvgIcon-root": {
-              color: (theme) => theme.palette.primary.main,
-              fontSize: "1.5rem",
-            },
-            "& .Mui-selected": {
-              "& .MuiSvgIcon-root": {
-                color: (theme) => theme.palette.primary.dark,
-                fontSize: "2.25rem",
-              },
-            },
-          }}
-          className="TabList"
-          indicatorColor="none"
-          onChange={handleChange}
-          aria-label="lab API tabs example"
-        >
-          <StyledTab
-            className="Tab"
-            label={<TimelineIcon />}
-            value="timeline"
-          />
-          <StyledTab className="Tab" label={<GridViewIcon />} value="diary" />
-          <i className="Tab"></i>
-          <StyledTab
-            className="Tab"
-            label={<CalendarMonthIcon />}
-            value="calendar"
-          />
-          <StyledTab
-            className="Tab"
-            label={<AccountCircleIcon />}
-            value="account"
-          />
-        </TabList>
-        <TabPanel value="timeline">
-          <Timeline />
-        </TabPanel>
-        <TabPanel value="diary">
-          <Diary />
-        </TabPanel>
-        <TabPanel value="calendar">
-          <Calendar />
-        </TabPanel>
-        <TabPanel sx={{ padding: 0 }} value="account">
-          <Account />
-        </TabPanel>
-      </TabContext>
-      <PopupPage
-        pageContent={<WriteForm />}
-        toggleComponent={<AddDiaryIcon />}
-      />
-    </div>
-  );
+    return (
+        <div>
+            <TabContext className="TabContext" value={value}>
+                <TabList
+                    sx={{
+                        zIndex: 1,
+                        backgroundColor: (theme) => theme.palette.ternary.main,
+                        "& .MuiSvgIcon-root": {
+                            color: (theme) => theme.palette.primary.main,
+                            fontSize: "1.5rem",
+                        },
+                        "& .Mui-selected": {
+                            "& .MuiSvgIcon-root": {
+                                color: (theme) => theme.palette.primary.dark,
+                                fontSize: "2.25rem",
+                            },
+                        },
+                    }}
+                    className="TabList"
+                    indicatorColor="none"
+                    onChange={handleChange}
+                    aria-label="lab API tabs example"
+                >
+                    <StyledTab
+                        className="Tab"
+                        label={<TimelineIcon />}
+                        value="timeline"
+                    />
+                    <StyledTab
+                        className="Tab"
+                        label={<GridViewIcon />}
+                        value="diary"
+                    />
+                    <i className="Tab"></i>
+                    <StyledTab
+                        className="Tab"
+                        label={<CalendarMonthIcon />}
+                        value="calendar"
+                    />
+                    <StyledTab
+                        className="Tab"
+                        label={<AccountCircleIcon />}
+                        value="account"
+                    />
+                </TabList>
+                <TabPanel value="timeline">
+                    <Timeline />
+                </TabPanel>
+                <TabPanel value="diary">
+                    <Diary />
+                </TabPanel>
+                <TabPanel value="calendar">
+                    <Calendar />
+                </TabPanel>
+                <TabPanel sx={{ padding: 0 }} value="account">
+                    <Account />
+                </TabPanel>
+            </TabContext>
+            <PopupPage
+                pageContent={<WriteForm />}
+                toggleComponent={<AddDiaryIcon />}
+            />
+        </div>
+    );
 }

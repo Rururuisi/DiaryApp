@@ -20,8 +20,22 @@ const diarySchema = new mongoose.Schema({
         required: true,
     },
     date: {
-        type: String,
-        required: true,
+        year: {
+            type: String,
+            required: true,
+        },
+        month: {
+            type: String,
+            required: true,
+        },
+        date: {
+            type: String,
+            required: true,
+        },
+        weekday: {
+            type: String,
+            required: true,
+        },
     },
     last_modified_time: {
         type: String,
