@@ -10,14 +10,16 @@ import {
     getCurrentTimeStr,
 } from "../utils/diaryInfoTools";
 
-export default function WriteForm() {
-    const [diary, setDiary] = useState({
+export default function WriteForm({ diaryCurrentState }) {
+    let initialDiary = diaryCurrentState || {
         title: "",
         date: getCurrentDateObj(),
         weather: "sunny",
         content: "",
         last_modified_time: "",
-    });
+    };
+
+    const [diary, setDiary] = useState(initialDiary);
 
     const handleDate = (evt) => {
         const [year, month, date] = evt.target.value.split("-");
