@@ -14,6 +14,7 @@ export default function WriteForm({
     diaryCurrentState,
     onAddDiary,
     onCloseForm,
+    isNew = true,
 }) {
     let initialDiary = diaryCurrentState || {
         title: "",
@@ -45,11 +46,12 @@ export default function WriteForm({
     const formSubmit = async (evt) => {
         evt.preventDefault();
         try {
+            const endpoint = isNew ? "/diary/new" : `/diary/${diary._id}update`;
             const diaryData = {
                 ...diary,
                 created_time: getCurrentTimeStr(),
             };
-            const response = await fetch("/diary/new", {
+            const response = await fetch(endpoint, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(diaryData),

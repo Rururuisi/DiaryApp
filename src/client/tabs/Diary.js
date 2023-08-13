@@ -4,6 +4,7 @@ import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import PopupPage from "../components/PopupPage";
 import DiaryCard from "../components/DiaryCard";
 import ShowDiary from "../components/ShowDiary";
+import WriteForm from "../components/WriteForm";
 
 export default function Diary({ diaries }) {
     const getShowDiary = (diary) => {
