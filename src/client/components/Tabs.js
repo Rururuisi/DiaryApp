@@ -5,11 +5,11 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import TimelineIcon from "@mui/icons-material/Timeline";
+import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import GridViewIcon from "@mui/icons-material/GridView";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Timeline from "../tabs/Timeline";
+import Dashboard from "../tabs/Dashboard";
 import Diary from "../tabs/Diary";
 import Calendar from "../tabs/Calendar";
 import Account from "../tabs/Account";
@@ -50,7 +50,7 @@ function Tabs({ diaries }) {
             >
                 <StyledTab
                     className="Tab"
-                    label={<TimelineIcon />}
+                    label={<LeaderboardIcon />}
                     value="timeline"
                 />
                 <StyledTab
@@ -71,7 +71,7 @@ function Tabs({ diaries }) {
                 />
             </TabList>
             <TabPanel value="timeline">
-                <Timeline />
+                <Dashboard />
             </TabPanel>
             <TabPanel value="diary">
                 <Diary diaries={diaries} />

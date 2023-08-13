@@ -1,10 +1,9 @@
-import "../styles/timeline.css";
 import React from "react";
 import GrassIcon from "@mui/icons-material/Grass";
 
-export default function outlinedTimeline() {
+export default function Dashboard() {
     return (
-        <div className="Timeline">
+        <div className="">
             <header>
                 <h1>
                     Dashboard <GrassIcon color="primary" />

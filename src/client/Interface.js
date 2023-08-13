@@ -6,7 +6,6 @@ import Tabs from "./components/Tabs";
 import PopupPage from "./components/PopupPage";
 import WriteForm from "./components/WriteForm";
 import AddDiaryIcon from "./components/AddDiaryIcon";
-import { set } from "mongoose";
 
 export default function Interface() {
     const [diaryEntries, setDiaryEntries] = useState([]);
@@ -21,13 +20,18 @@ export default function Interface() {
         setDiaryEntries((prevData) => [...prevData, diary]);
     };
 
+    const getWriteForm = (onCloseForm) => {
+        return <WriteForm onAddDiary={handleAdd} onCloseForm={onCloseForm} />;
+    };
+    console.log(getWriteForm);
+
     return (
         <div>
             {diaryEntries.length > 0 ? (
                 <>
                     <Tabs diaries={diaryEntries} />
                     <PopupPage
-                        pageContent={<WriteForm onAddDiary={handleAdd} />}
+                        pageContentFunc={getWriteForm}
                         toggleComponent={<AddDiaryIcon />}
                     />
                 </>

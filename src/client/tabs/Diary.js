@@ -6,6 +6,10 @@ import DiaryCard from "../components/DiaryCard";
 import ShowDiary from "../components/ShowDiary";
 
 export default function Diary({ diaries }) {
+    const getShowDiary = (diary) => {
+        return <ShowDiary diary={diary} />;
+    };
+
     return (
         <div className="Diary">
             <header>
@@ -18,7 +22,7 @@ export default function Diary({ diaries }) {
                 diaries.map((diary) => (
                     <PopupPage
                         key={diary._id}
-                        pageContent={<ShowDiary diary={diary} />}
+                        pageContentCompo={getShowDiary(diary)}
                         toggleComponent={<DiaryCard diary={diary} />}
                     />
                 ))}

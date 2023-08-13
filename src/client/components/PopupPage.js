@@ -9,10 +9,14 @@ const BackIcon = styled(ArrowBackIosIcon)({
     cursor: "pointer",
 });
 
-export default function PopupPage({ pageContent, toggleComponent }) {
+export default function PopupPage({
+    pageContentFunc,
+    pageContentCompo,
+    toggleComponent,
+}) {
     const [open, setOpen] = React.useState(false);
 
-    const toggleDrawer = (newOpen) => () => {
+    const toggleDrawer = (newOpen) => {
         setOpen(newOpen);
     };
 
@@ -31,17 +35,23 @@ export default function PopupPage({ pageContent, toggleComponent }) {
             >
                 <BackIcon
                     sx={{ color: (theme) => theme.palette.primary.dark }}
-                    onClick={toggleDrawer(false)}
+                    onClick={() => toggleDrawer(false)}
                 />
             </Toolbar>
-            <Box sx={{ padding: "0 15px" }}>{pageContent}</Box>
+            <Box sx={{ padding: "0 15px" }}>
+                {pageContentCompo || pageContentFunc(toggleDrawer)}
+            </Box>
         </Box>
     );
 
     return (
         <React.Fragment>
-            <div onClick={toggleDrawer(true)}>{toggleComponent}</div>
-            <Drawer anchor={"top"} open={open} onClose={toggleDrawer(false)}>
+            <div onClick={() => toggleDrawer(true)}>{toggleComponent}</div>
+            <Drawer
+                anchor={"top"}
+                open={open}
+                onClose={() => toggleDrawer(false)}
+            >
                 {page()}
             </Drawer>
         </React.Fragment>
