@@ -1,5 +1,5 @@
 import "../styles/diary.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import PopupPage from "../components/PopupPage";
 import DiaryCard from "../components/DiaryCard";

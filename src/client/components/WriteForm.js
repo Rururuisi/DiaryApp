@@ -40,18 +40,22 @@ export default function WriteForm({ diaryCurrentState, onAddDiary }) {
 
     const formSubmit = async (evt) => {
         evt.preventDefault();
-        const diaryData = {
-            ...diary,
-            created_time: getCurrentTimeStr(),
-        };
-        const response = await fetch("/diary/new", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(diaryData),
-        });
-        const data = await response.json();
-        onAddDiary(diaryData);
-        alert(data);
+        try {
+            const diaryData = {
+                ...diary,
+                created_time: getCurrentTimeStr(),
+            };
+            const response = await fetch("/diary/new", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(diaryData),
+            });
+            const data = await response.json();
+            onAddDiary(diaryData);
+            alert(data);
+        } catch (err) {
+            alert(err.message);
+        }
     };
 
     return (
