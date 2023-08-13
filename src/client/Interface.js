@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Tabs from "./components/Tabs";
 import PopupPage from "./components/PopupPage";
-import WriteForm from "./components/WriteForm";
 import AddDiaryIcon from "./components/AddDiaryIcon";
 
 export default function Interface() {
@@ -14,24 +13,20 @@ export default function Interface() {
         const response = await fetch("/diary");
         const diaryData = await response.json();
         setDiaryEntries(diaryData);
-    }, []);
+    });
 
     const handleAdd = (diary) => {
         setDiaryEntries((prevData) => [...prevData, diary]);
     };
 
-    const getWriteForm = (onCloseForm) => {
-        return <WriteForm onAddDiary={handleAdd} onCloseForm={onCloseForm} />;
-    };
-    console.log(getWriteForm);
-
     return (
         <div>
             {diaryEntries.length > 0 ? (
                 <>
-                    <Tabs diaries={diaryEntries} />
+                    <Tabs diaries={diaryEntries} onAddDiary={handleAdd} />
                     <PopupPage
-                        pageContentFunc={getWriteForm}
+                        onAddDiary={handleAdd}
+                        pageContent={"WriteForm"}
                         toggleComponent={<AddDiaryIcon />}
                     />
                 </>

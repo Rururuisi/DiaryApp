@@ -8,5 +8,13 @@ module.exports.index = async (req, res) => {
 module.exports.createDiary = async (req, res) => {
     const diary = new Diary(req.body);
     await diary.save();
-    res.json("Diary Created!");
+    res.json(diary);
+};
+
+module.exports.updateDiary = async (req, res) => {
+    const { id } = req.params;
+    const diary = await Diary.findByIdAndUpdate(id, { ...req.body });
+    await diary.save();
+    const returnDiary = await Diary.findById(id);
+    res.json(returnDiary);
 };

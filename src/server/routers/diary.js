@@ -6,4 +6,6 @@ router.route("/").get(diary.index);
 
 router.route("/new").post(diary.createDiary);
 
+router.route("/:id").put(diary.updateDiary);
+
 module.exports = router;

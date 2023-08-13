@@ -3,14 +3,8 @@ import React from "react";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import PopupPage from "../components/PopupPage";
 import DiaryCard from "../components/DiaryCard";
-import ShowDiary from "../components/ShowDiary";
-import WriteForm from "../components/WriteForm";
 
-export default function Diary({ diaries }) {
-    const getShowDiary = (diary) => {
-        return <ShowDiary diary={diary} />;
-    };
-
+export default function Diary({ diaries, onAddDiary }) {
     return (
         <div className="Diary">
             <header>
@@ -23,7 +17,9 @@ export default function Diary({ diaries }) {
                 diaries.map((diary) => (
                     <PopupPage
                         key={diary._id}
-                        pageContentCompo={getShowDiary(diary)}
+                        diary={diary}
+                        onAddDiary={onAddDiary}
+                        pageContent={"ShowDiary"}
                         toggleComponent={<DiaryCard diary={diary} />}
                     />
                 ))}

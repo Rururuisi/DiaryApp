@@ -13,15 +13,14 @@ import {
 export default function WriteForm({
     diaryCurrentState,
     onAddDiary,
-    onCloseForm,
-    isNew = true,
+    onReadForm,
 }) {
     let initialDiary = diaryCurrentState || {
         title: "",
         created_date: getCurrentDateObj(),
         weather: "sunny",
         content: "",
-        created_time: "",
+        last_modified_time: "",
     };
 
     const [diary, setDiary] = useState(initialDiary);
@@ -46,20 +45,18 @@ export default function WriteForm({
     const formSubmit = async (evt) => {
         evt.preventDefault();
         try {
-            const endpoint = isNew ? "/diary/new" : `/diary/${diary._id}update`;
+            const endpoint = diary._id ? `/diary/${diary._id}` : "/diary/new";
             const diaryData = {
                 ...diary,
-                created_time: getCurrentTimeStr(),
+                last_modified_time: getCurrentTimeStr(),
             };
             const response = await fetch(endpoint, {
-                method: "POST",
+                method: diary._id ? "PUT" : "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(diaryData),
             });
-            const data = await response.json();
-            onAddDiary(diaryData);
-            alert(data);
-            onCloseForm(false);
+            const newDiaryData = await response.json();
+            onReadForm(newDiaryData);
         } catch (err) {
             alert(err.message);
         }

@@ -1,23 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Drawer from "@mui/material/Drawer";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ShowDiary from "./ShowDiary";
+import WriteForm from "./WriteForm";
 
 const BackIcon = styled(ArrowBackIosIcon)({
     cursor: "pointer",
 });
 
 export default function PopupPage({
-    pageContentFunc,
-    pageContentCompo,
+    diary,
+    onAddDiary,
+    pageContent,
     toggleComponent,
 }) {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const [pageForm, setPageForm] = useState({
+        currentDiary: diary,
+        form: pageContent,
+    });
 
     const toggleDrawer = (newOpen) => {
+        setPageForm((prevData) => ({ ...prevData, form: pageContent }));
         setOpen(newOpen);
+    };
+
+    const changeToReadForm = (currentDiary) => {
+        setPageForm({ form: "ShowDiary", currentDiary });
+    };
+
+    const changeToWriteForm = (currentDiary) => {
+        setPageForm({ form: "WriteForm", currentDiary });
+    };
+
+    const getShowForm = () => {
+        return (
+            <ShowDiary
+                diary={pageForm.currentDiary}
+                onEditForm={changeToWriteForm}
+            />
+        );
+    };
+
+    const getWriteForm = () => {
+        return (
+            <WriteForm
+                diaryCurrentState={pageForm.currentDiary}
+                onAddDiary={onAddDiary}
+                onReadForm={changeToReadForm}
+            />
+        );
     };
 
     const page = () => (
@@ -39,7 +74,7 @@ export default function PopupPage({
                 />
             </Toolbar>
             <Box sx={{ padding: "0 15px" }}>
-                {pageContentCompo || pageContentFunc(toggleDrawer)}
+                {pageForm.form === "WriteForm" ? getWriteForm() : getShowForm()}
             </Box>
         </Box>
     );
