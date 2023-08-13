@@ -14,7 +14,7 @@ export default function App() {
                 <p>
                     深入学习React中，暂停开发。学习完毕后将在一周内完成此App的开发工作。
                 </p>
-                <p>目前进度：可以创建新日记并提交</p>
+                <p style={{ color: "red" }}>目前进度：可以创建新日记并提交</p>
                 <p style={{ textAlign: "center" }}>后续功能敬请期待！</p>
             </Announcement>
             <div className="App">
