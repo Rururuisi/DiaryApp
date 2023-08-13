@@ -5,8 +5,8 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import GridViewIcon from "@mui/icons-material/GridView";
+import LeaderboardRoundedIcon from "@mui/icons-material/LeaderboardRounded";
+import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Dashboard from "../tabs/Dashboard";
@@ -50,12 +50,12 @@ function Tabs({ diaries }) {
             >
                 <StyledTab
                     className="Tab"
-                    label={<LeaderboardIcon />}
+                    label={<LeaderboardRoundedIcon />}
                     value="timeline"
                 />
                 <StyledTab
                     className="Tab"
-                    label={<GridViewIcon />}
+                    label={<AutoStoriesIcon />}
                     value="diary"
                 />
                 <i className="Tab"></i>
