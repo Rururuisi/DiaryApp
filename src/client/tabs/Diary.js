@@ -4,7 +4,7 @@ import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import PopupPage from "../components/PopupPage";
 import DiaryCard from "../components/DiaryCard";
 
-export default function Diary({ diaries, onAddDiary }) {
+export default function Diary({ diaries }) {
     return (
         <div className="Diary">
             <header>
@@ -18,7 +18,6 @@ export default function Diary({ diaries, onAddDiary }) {
                     <PopupPage
                         key={diary._id}
                         diary={diary}
-                        onAddDiary={onAddDiary}
                         pageContent={"ShowDiary"}
                         toggleComponent={<DiaryCard diary={diary} />}
                     />

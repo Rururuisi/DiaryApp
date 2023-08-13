@@ -11,12 +11,7 @@ const BackIcon = styled(ArrowBackIosIcon)({
     cursor: "pointer",
 });
 
-export default function PopupPage({
-    diary,
-    onAddDiary,
-    pageContent,
-    toggleComponent,
-}) {
+export default function PopupPage({ diary, pageContent, toggleComponent }) {
     const [open, setOpen] = useState(false);
     const [pageForm, setPageForm] = useState({
         currentDiary: diary,
@@ -49,7 +44,6 @@ export default function PopupPage({
         return (
             <WriteForm
                 diaryCurrentState={pageForm.currentDiary}
-                onAddDiary={onAddDiary}
                 onReadForm={changeToReadForm}
             />
         );

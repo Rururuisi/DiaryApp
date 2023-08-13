@@ -19,7 +19,7 @@ const StyledTab = styled(Tab)({
     height: 60,
 });
 
-function Tabs({ diaries, onAddDiary }) {
+function Tabs({ diaries }) {
     const [value, setValue] = useState("timeline");
 
     const handleChange = (evt, newValue) => {
@@ -74,7 +74,7 @@ function Tabs({ diaries, onAddDiary }) {
                 <Dashboard />
             </TabPanel>
             <TabPanel value="diary">
-                <Diary diaries={diaries} onAddDiary={onAddDiary} />
+                <Diary diaries={diaries} />
             </TabPanel>
             <TabPanel value="calendar">
                 <Calendar />

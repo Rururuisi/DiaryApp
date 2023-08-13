@@ -15,17 +15,12 @@ export default function Interface() {
         setDiaryEntries(diaryData);
     });
 
-    const handleAdd = (diary) => {
-        setDiaryEntries((prevData) => [...prevData, diary]);
-    };
-
     return (
         <div>
             {diaryEntries.length > 0 ? (
                 <>
-                    <Tabs diaries={diaryEntries} onAddDiary={handleAdd} />
+                    <Tabs diaries={diaryEntries} />
                     <PopupPage
-                        onAddDiary={handleAdd}
                         pageContent={"WriteForm"}
                         toggleComponent={<AddDiaryIcon />}
                     />

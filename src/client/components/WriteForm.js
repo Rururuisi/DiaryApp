@@ -10,11 +10,7 @@ import {
     getCurrentTimeStr,
 } from "../utils/diaryInfoTools";
 
-export default function WriteForm({
-    diaryCurrentState,
-    onAddDiary,
-    onReadForm,
-}) {
+export default function WriteForm({ diaryCurrentState, onReadForm }) {
     let initialDiary = diaryCurrentState || {
         title: "",
         created_date: getCurrentDateObj(),
