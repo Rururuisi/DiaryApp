@@ -18,3 +18,9 @@ module.exports.updateDiary = async (req, res) => {
     const returnDiary = await Diary.findById(id);
     res.json(returnDiary);
 };
+
+module.exports.deleteDiary = async (req, res) => {
+    const { id } = req.params;
+    const diary = await Diary.findByIdAndDelete(id);
+    res.json("Deleted successfully! ");
+};

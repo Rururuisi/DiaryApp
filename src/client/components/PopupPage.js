@@ -36,6 +36,7 @@ export default function PopupPage({ diary, pageContent, toggleComponent }) {
             <ShowDiary
                 diary={pageForm.currentDiary}
                 onEditForm={changeToWriteForm}
+                onClosePopup={toggleDrawer}
             />
         );
     };

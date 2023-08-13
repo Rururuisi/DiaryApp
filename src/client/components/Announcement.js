@@ -2,7 +2,7 @@ import "../styles/announcement.css";
 import React, { useState } from "react";
 
 export default function Announcement({ children }) {
-    const [isOpen, setIsOpen] = useState("true");
+    const [isOpen, setIsOpen] = useState(true);
 
     const closeAnnouce = () => {
         setIsOpen(false);
