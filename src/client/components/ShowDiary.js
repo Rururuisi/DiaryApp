@@ -19,7 +19,7 @@ export default function ShowDiary({ diary, onEditForm, onClosePopup }) {
     const handleDelete = async () => {
         closeAnnounce();
         try {
-            await fetch(`/diary/${diary._id}`, {
+            await fetch(`/api/diary/${diary._id}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(diary),

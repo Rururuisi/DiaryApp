@@ -10,7 +10,7 @@ export default function Interface() {
     const [diaryEntries, setDiaryEntries] = useState([]);
 
     useEffect(async () => {
-        const response = await fetch("/diary");
+        const response = await fetch("/api/diary");
         const diaryData = await response.json();
         setDiaryEntries(diaryData);
     });

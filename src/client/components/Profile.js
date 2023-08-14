@@ -8,8 +8,9 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 
 const imageUrl =
-    "https://images.unsplash.com/photo-1519327232521-1ea2c736d34d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80";
-const avatar = "https://upen.caup.net/ai_pics_mj/202303/1677952366325269.jpg";
+    "https://res.cloudinary.com/dbcxqmkq0/image/upload/v1691980561/DiaryAppAssets/profileBG_qwd1lw.avif";
+const avatar =
+    "https://res.cloudinary.com/dbcxqmkq0/image/upload/v1691980555/DiaryAppAssets/avatar_d4grja.jpg";
 
 export default function Profile() {
     return (

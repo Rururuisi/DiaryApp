@@ -1,12 +1,19 @@
 import "./styles/app.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import Interface from "./Interface";
 import { theme } from "./utils/theme";
+import AppEntrance from "./entrance/AppEntrance";
 import Announcement from "./components/Announcement";
 
 export default function App() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const handleLogged = () => {
+        setIsLoggedIn(true);
+    };
+
     return (
         <>
             {/* <Announcement>
@@ -17,17 +24,21 @@ export default function App() {
                 <p style={{ color: "grey" }}>下一更新内容：用户注册登录</p>
                 <p style={{ textAlign: "center" }}>后续功能敬请期待！</p>
             </Announcement> */}
-            <div className="App">
-                <ThemeProvider theme={theme}>
-                    <BrowserRouter>
-                        <Routes>
-                            <Route path="/" element={<Interface />}>
-                                <Route index element={<Interface />} />
-                            </Route>
-                        </Routes>
-                    </BrowserRouter>
-                </ThemeProvider>
-            </div>
+            {!isLoggedIn ? (
+                <AppEntrance onLogged={handleLogged} />
+            ) : (
+                <div className="App">
+                    <ThemeProvider theme={theme}>
+                        <BrowserRouter>
+                            <Routes>
+                                <Route path="/" element={<Interface />}>
+                                    <Route index element={<Interface />} />
+                                </Route>
+                            </Routes>
+                        </BrowserRouter>
+                    </ThemeProvider>
+                </div>
+            )}
         </>
     );
 }

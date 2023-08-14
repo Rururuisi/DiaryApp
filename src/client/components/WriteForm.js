@@ -2,7 +2,6 @@ import "../styles/writeForm.css";
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import CheckIcon from "@mui/icons-material/Check";
-
 import {
     weathers,
     getCurrentDateObj,
@@ -41,7 +40,9 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
     const formSubmit = async (evt) => {
         evt.preventDefault();
         try {
-            const endpoint = diary._id ? `/diary/${diary._id}` : "/diary/new";
+            const endpoint = diary._id
+                ? `/api/diary/${diary._id}`
+                : "/api/diary/new";
             const diaryData = {
                 ...diary,
                 last_modified_time: getCurrentTimeStr(),
@@ -52,6 +53,7 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                 body: JSON.stringify(diaryData),
             });
             const newDiaryData = await response.json();
+            setDiary(newDiaryData);
             onReadForm(newDiaryData);
         } catch (err) {
             alert(err.message);
