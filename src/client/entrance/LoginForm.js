@@ -22,7 +22,11 @@ function LoginForm({ onCancel, onRegister }) {
                 <img src="/favicon.ico" />
                 <h1>Login</h1>
                 <form>
-                    <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                    <FormControl
+                        fullWidth
+                        sx={{ m: 1, maxWidth: "500px" }}
+                        variant="standard"
+                    >
                         <TextField
                             // error
                             // helperText={}
@@ -32,7 +36,12 @@ function LoginForm({ onCancel, onRegister }) {
                             required
                         />
                     </FormControl>
-                    <FormControl fullWidth sx={{ m: 1 }} variant="standard">
+                    <br />
+                    <FormControl
+                        fullWidth
+                        sx={{ m: 1, maxWidth: "500px" }}
+                        variant="standard"
+                    >
                         <TextField
                             // error
                             // helperText={}
