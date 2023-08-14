@@ -104,6 +104,9 @@ function RegisterForm({ onCancel, onLogin }) {
                     </button>
                     <button className="rightBtn">Register</button>
                 </div>
+                <p onClickCapture={() => onLogin()} className="goTo">
+                    Already has an account? Go to login{" "}
+                </p>
             </main>
         </div>
     );

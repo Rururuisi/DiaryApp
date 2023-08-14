@@ -20,7 +20,7 @@ function LoginForm({ onCancel, onRegister }) {
         <div className="Page Login">
             <main>
                 <img src="/favicon.ico" />
-                <h1>Register</h1>
+                <h1>Login</h1>
                 <form>
                     <FormControl fullWidth sx={{ m: 1 }} variant="standard">
                         <TextField
@@ -69,6 +69,9 @@ function LoginForm({ onCancel, onRegister }) {
                     </button>
                     <button className="rightBtn">Login</button>
                 </div>
+                <p onClick={() => onRegister()} className="goTo">
+                    Doesn't have an account? Go to register{" "}
+                </p>
             </main>
         </div>
     );

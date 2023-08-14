@@ -17,8 +17,8 @@
 }
 
 .Page .btnGroup {
-    top: 70vh;
-    bottom: unset;
+    margin-top: 5vh;
+    margin-bottom: 3vh;
 }
 
 .Page .btnGroup button {
@@ -29,4 +29,10 @@
 
 .Page .btnGroup .rightBtn {
     background: #5c8730;
+}
+
+.goTo {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
 }

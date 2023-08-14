@@ -16,24 +16,13 @@
     box-shadow: -20px -20px 20px rgba(0, 0, 0, 0.2);
 }
 
-.AppIcon {
-    position: fixed;
-    top: 40vh;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-
 .AppIcon img {
+    margin-top: 35vh;
     margin-bottom: 10px;
 }
 
 .btnGroup {
-    position: fixed;
-    bottom: 20vh;
-    left: 0;
-    right: 0;
-    margin: auto;
+    margin-top: 15vh;
 }
 
 .btnGroup button {

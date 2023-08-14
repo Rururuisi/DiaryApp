@@ -22,8 +22,16 @@ function AppEntrance({ onLogged }) {
         />
     );
 
-    const registerForm = <RegisterForm onCancel={getEntranceSelection} />;
-    const loginForm = <LoginForm onCancel={getEntranceSelection} />;
+    const registerForm = (
+        <RegisterForm onCancel={getEntranceSelection} onLogin={getLoginForm} />
+    );
+
+    const loginForm = (
+        <LoginForm
+            onCancel={getEntranceSelection}
+            onRegister={getRegisterForm}
+        />
+    );
 
     const [component, setComponent] = useState(entranceSelection);
 
