@@ -7,7 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-function LoginForm() {
+function LoginForm({ onCancel, onRegister }) {
     const [showPassword, setShowPassword] = React.useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -64,7 +64,9 @@ function LoginForm() {
                     </FormControl>
                 </form>
                 <div className="btnGroup">
-                    <button className="leftBtn">Cancel</button>
+                    <button onClick={() => onCancel()} className="leftBtn">
+                        Cancel
+                    </button>
                     <button className="rightBtn">Login</button>
                 </div>
             </main>

@@ -4,11 +4,15 @@ import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
 
 function AppEntrance({ onLogged }) {
+    const getEntranceSelection = () => {
+        setComponent(entranceSelection);
+    };
+
     const getRegisterForm = () => {
-        setComponent(<RegisterForm />);
+        setComponent(registerForm);
     };
     const getLoginForm = () => {
-        setComponent(<LoginForm />);
+        setComponent(loginForm);
     };
 
     const entranceSelection = (
@@ -17,6 +21,10 @@ function AppEntrance({ onLogged }) {
             onLogin={getLoginForm}
         />
     );
+
+    const registerForm = <RegisterForm onCancel={getEntranceSelection} />;
+    const loginForm = <LoginForm onCancel={getEntranceSelection} />;
+
     const [component, setComponent] = useState(entranceSelection);
 
     return <div>{component}</div>;
