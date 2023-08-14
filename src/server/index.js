@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 
 const diaryRoutes = require("./routers/diary");
+const userRoutes = require("./routers/user");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -51,6 +52,7 @@ app.get("/", async (req, res) => {
     );
 });
 
+app.use("/api/user", userRoutes);
 app.use("/api/diary", diaryRoutes);
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}!`));
