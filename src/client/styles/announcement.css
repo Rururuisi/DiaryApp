@@ -1,5 +1,5 @@
 .AnnouncementBg {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -9,7 +9,7 @@
 }
 
 .Announcement {
-  position: absolute;
+  position: fixed;
   top: 15vh;
   left: 0;
   right: 0;

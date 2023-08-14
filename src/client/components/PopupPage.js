@@ -61,7 +61,12 @@ export default function PopupPage({ diary, pageContent, toggleComponent }) {
         >
             <Toolbar
                 color="ternary"
-                sx={{ position: "fixed", top: 0, width: "100%" }}
+                sx={{
+                    position: "fixed",
+                    top: 0,
+                    width: "100%",
+                    backgroundColor: "#fff",
+                }}
             >
                 <BackIcon
                     sx={{ color: (theme) => theme.palette.primary.dark }}
