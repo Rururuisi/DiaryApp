@@ -1,0 +1,61 @@
+.EntranceSelection {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to top right, #104201, #145500, #8bab57);
+    text-align: center;
+}
+
+.EntranceSelection main {
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    border-radius: 60% 0 20% 0;
+    box-shadow: -20px -20px 20px rgba(0, 0, 0, 0.2);
+}
+
+.AppIcon {
+    position: fixed;
+    top: 40vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.AppIcon img {
+    margin-bottom: 10px;
+}
+
+.btnGroup {
+    position: fixed;
+    bottom: 20vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.btnGroup button {
+    width: 180px;
+    height: 50px;
+    font-size: 20px;
+    color: white;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.btnGroup button:hover {
+    transform: scale(1.1);
+}
+
+.registerBtn {
+    margin-right: 40px;
+    background: linear-gradient(to right, #104201, #82a44b);
+}
+
+.loginBtn {
+    background: linear-gradient(to left, #104201, #82a44b);
+}

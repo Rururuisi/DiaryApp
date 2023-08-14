@@ -16,7 +16,8 @@ export default function App() {
 
     return (
         <>
-            {/* <Announcement>
+            <ThemeProvider theme={theme}>
+                {/* <Announcement>
                 <h2>更新日志</h2>
                 <p style={{ color: "red" }}>
                     目前进度：可创建、查看、修改、删除日记
@@ -24,11 +25,10 @@ export default function App() {
                 <p style={{ color: "grey" }}>下一更新内容：用户注册登录</p>
                 <p style={{ textAlign: "center" }}>后续功能敬请期待！</p>
             </Announcement> */}
-            {!isLoggedIn ? (
-                <AppEntrance onLogged={handleLogged} />
-            ) : (
-                <div className="App">
-                    <ThemeProvider theme={theme}>
+                {!isLoggedIn ? (
+                    <AppEntrance onLogged={handleLogged} />
+                ) : (
+                    <div className="App">
                         <BrowserRouter>
                             <Routes>
                                 <Route path="/" element={<Interface />}>
@@ -36,9 +36,9 @@ export default function App() {
                                 </Route>
                             </Routes>
                         </BrowserRouter>
-                    </ThemeProvider>
-                </div>
-            )}
+                    </div>
+                )}
+            </ThemeProvider>
         </>
     );
 }
