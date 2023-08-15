@@ -3,7 +3,6 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 
@@ -12,7 +11,7 @@ const imageUrl =
 const avatar =
     "https://res.cloudinary.com/dbcxqmkq0/image/upload/v1691980555/DiaryAppAssets/avatar_d4grja.jpg";
 
-export default function Profile() {
+export default function Profile({ user }) {
     return (
         <Card sx={{ Width: "100%" }}>
             <Avatar
@@ -36,7 +35,7 @@ export default function Profile() {
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    Username
+                    {user.displayName || user.username}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                     This person is lazy, didn't leave anything here...

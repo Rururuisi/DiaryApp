@@ -9,9 +9,11 @@ import Announcement from "./components/Announcement";
 
 export default function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [user, setUser] = useState({});
 
-    const handleLogged = () => {
+    const handleLogged = (user) => {
         setIsLoggedIn(true);
+        setUser(user);
     };
 
     return (
@@ -29,13 +31,7 @@ export default function App() {
                     <AppEntrance onLogged={handleLogged} />
                 ) : (
                     <div className="App">
-                        <BrowserRouter>
-                            <Routes>
-                                <Route path="/" element={<Interface />}>
-                                    <Route index element={<Interface />} />
-                                </Route>
-                            </Routes>
-                        </BrowserRouter>
+                        <Interface user={user} />
                     </div>
                 )}
             </ThemeProvider>

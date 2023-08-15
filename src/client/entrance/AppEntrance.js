@@ -23,13 +23,18 @@ function AppEntrance({ onLogged }) {
     );
 
     const registerForm = (
-        <RegisterForm onCancel={getEntranceSelection} onLogin={getLoginForm} />
+        <RegisterForm
+            onCancel={getEntranceSelection}
+            onLogin={getLoginForm}
+            onLogged={onLogged}
+        />
     );
 
     const loginForm = (
         <LoginForm
             onCancel={getEntranceSelection}
             onRegister={getRegisterForm}
+            onLogged={onLogged}
         />
     );
 

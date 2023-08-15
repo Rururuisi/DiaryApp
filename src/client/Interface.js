@@ -6,7 +6,7 @@ import Tabs from "./components/Tabs";
 import PopupPage from "./components/PopupPage";
 import AddDiaryIcon from "./components/AddDiaryIcon";
 
-export default function Interface() {
+export default function Interface({ user }) {
     const [diaryEntries, setDiaryEntries] = useState([]);
 
     useEffect(async () => {
@@ -19,7 +19,7 @@ export default function Interface() {
         <div>
             {diaryEntries.length > 0 ? (
                 <>
-                    <Tabs diaries={diaryEntries} />
+                    <Tabs user={user} diaries={diaryEntries} />
                     <PopupPage
                         pageContent={"WriteForm"}
                         toggleComponent={<AddDiaryIcon />}

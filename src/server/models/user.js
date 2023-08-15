@@ -1,8 +1,16 @@
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
-const passportLocalMongoose = require("passport-local-mongoose");
 
 const userSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        require: true,
+        unique: true,
+    },
+    hash: {
+        type: String,
+        require: true,
+    },
     displayName: String,
     email: String,
     avatar: {
@@ -21,7 +29,6 @@ const userSchema = new mongoose.Schema({
     ],
 });
 
-userSchema.plugin(uniqueValidator);
-userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(uniqueValidator, { message: "Username already exists!" });
 
 module.exports = mongoose.model("User", userSchema);

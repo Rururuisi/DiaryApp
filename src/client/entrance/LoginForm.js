@@ -1,5 +1,5 @@
 import "../styles/registerLogin.css";
-import React from "react";
+import React, { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
@@ -7,7 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-function LoginForm({ onCancel, onRegister }) {
+function LoginForm({ onCancel, onRegister, onLogged }) {
     const [showPassword, setShowPassword] = React.useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -16,12 +16,36 @@ function LoginForm({ onCancel, onRegister }) {
         event.preventDefault();
     };
 
+    const [user, setUser] = useState({
+        username: "",
+        password: "",
+    });
+
+    const handleUsername = (evt, filed) => {
+        setUser((prev) => ({ ...prev, [filed]: evt.target.value }));
+    };
+
+    const handleSubmit = async (evt) => {
+        evt.preventDefault();
+        const { username, password } = user;
+        const response = await fetch("/api/user/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password }),
+        });
+        const data = await response.json();
+        if (data.err) alert(data.err);
+        else onLogged(data);
+    };
+
     return (
         <div className="Page Login">
             <main>
                 <img src="/favicon.ico" />
                 <h1>Login</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <FormControl
                         fullWidth
                         sx={{ m: 1, maxWidth: "500px" }}
@@ -33,6 +57,8 @@ function LoginForm({ onCancel, onRegister }) {
                             id="username"
                             label="Username"
                             variant="standard"
+                            value={user.username}
+                            onChange={(evt) => handleUsername(evt, "username")}
                             required
                         />
                     </FormControl>
@@ -68,19 +94,23 @@ function LoginForm({ onCancel, onRegister }) {
                                     </InputAdornment>
                                 ),
                             }}
+                            value={user.password}
+                            onChange={(evt) => handleUsername(evt, "password")}
                             required
                         />
                     </FormControl>
+                    <div className="btnGroup">
+                        <button onClick={() => onCancel()} className="leftBtn">
+                            Cancel
+                        </button>
+                        <button type="submit" className="rightBtn">
+                            Login
+                        </button>
+                    </div>
+                    <p onClick={() => onRegister()} className="goTo">
+                        Doesn't have an account? Go to register{" "}
+                    </p>
                 </form>
-                <div className="btnGroup">
-                    <button onClick={() => onCancel()} className="leftBtn">
-                        Cancel
-                    </button>
-                    <button className="rightBtn">Login</button>
-                </div>
-                <p onClick={() => onRegister()} className="goTo">
-                    Doesn't have an account? Go to register{" "}
-                </p>
             </main>
         </div>
     );

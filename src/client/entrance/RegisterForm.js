@@ -7,7 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-function RegisterForm({ onCancel, onLogin }) {
+function RegisterForm({ onCancel, onLogin, onLogged }) {
     const [showPassword, setShowPassword] = React.useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
 
@@ -53,7 +53,7 @@ function RegisterForm({ onCancel, onLogin }) {
     const handleSubmit = async (evt) => {
         evt.preventDefault();
         const { username, password } = user;
-        const response = await fetch("/api/user", {
+        const response = await fetch("/api/user/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -61,7 +61,8 @@ function RegisterForm({ onCancel, onLogin }) {
             body: JSON.stringify({ username, password }),
         });
         const data = await response.json();
-        alert(data.err || data);
+        if (date.err) alert(data.err);
+        else onLogged(data);
     };
 
     return (
@@ -76,8 +77,6 @@ function RegisterForm({ onCancel, onLogin }) {
                         variant="standard"
                     >
                         <TextField
-                            // error
-                            // helperText={}
                             id="username"
                             label="Username"
                             variant="standard"
