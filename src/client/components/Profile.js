@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 
 const imageUrl =
-    "https://res.cloudinary.com/dbcxqmkq0/image/upload/v1691980561/DiaryAppAssets/profileBG_qwd1lw.avif";
+    "https://res.cloudinary.com/dbcxqmkq0/image/upload/v1692071907/DiaryAppAssets/profileBG_fhodas.jpg";
 const avatar =
     "https://res.cloudinary.com/dbcxqmkq0/image/upload/v1691980555/DiaryAppAssets/avatar_d4grja.jpg";
 
