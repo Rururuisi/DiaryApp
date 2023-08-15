@@ -3,7 +3,7 @@ import EntranceSelection from "./EntranceSelection";
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
 
-function AppEntrance({ onLogged }) {
+function AppEntrance() {
     const getEntranceSelection = () => {
         setComponent(entranceSelection);
     };
@@ -23,18 +23,13 @@ function AppEntrance({ onLogged }) {
     );
 
     const registerForm = (
-        <RegisterForm
-            onCancel={getEntranceSelection}
-            onLogin={getLoginForm}
-            onLogged={onLogged}
-        />
+        <RegisterForm onCancel={getEntranceSelection} onLogin={getLoginForm} />
     );
 
     const loginForm = (
         <LoginForm
             onCancel={getEntranceSelection}
             onRegister={getRegisterForm}
-            onLogged={onLogged}
         />
     );
 

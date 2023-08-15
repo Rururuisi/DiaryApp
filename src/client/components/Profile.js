@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
+import { UserContext } from "../utils/UserContextProvider";
+import { useCalendarState } from "@mui/x-date-pickers/internals";
 
 const imageUrl =
     "https://res.cloudinary.com/dbcxqmkq0/image/upload/v1692071907/DiaryAppAssets/profileBG_fhodas.jpg";
 const avatar =
     "https://res.cloudinary.com/dbcxqmkq0/image/upload/v1691980555/DiaryAppAssets/avatar_d4grja.jpg";
 
-export default function Profile({ user }) {
+export default function Profile() {
+    const { user } = useContext(UserContext);
+
     return (
         <Card sx={{ Width: "100%" }}>
             <Avatar

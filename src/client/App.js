@@ -1,23 +1,14 @@
 import "./styles/app.css";
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
 import { ThemeProvider } from "@mui/material/styles";
-import Interface from "./Interface";
 import { theme } from "./utils/theme";
-import AppEntrance from "./entrance/AppEntrance";
+import { UserContextProvider } from "./utils/UserContextProvider";
+import Entrance from "./Entrance";
 import Announcement from "./components/Announcement";
 
 export default function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState({});
-
-    const handleLogged = (user) => {
-        setIsLoggedIn(true);
-        setUser(user);
-    };
-
     return (
-        <>
+        <UserContextProvider>
             <ThemeProvider theme={theme}>
                 {/* <Announcement>
                 <h2>更新日志</h2>
@@ -27,14 +18,8 @@ export default function App() {
                 <p style={{ color: "grey" }}>下一更新内容：用户注册登录</p>
                 <p style={{ textAlign: "center" }}>后续功能敬请期待！</p>
             </Announcement> */}
-                {!isLoggedIn ? (
-                    <AppEntrance onLogged={handleLogged} />
-                ) : (
-                    <div className="App">
-                        <Interface user={user} />
-                    </div>
-                )}
+                <Entrance />
             </ThemeProvider>
-        </>
+        </UserContextProvider>
     );
 }

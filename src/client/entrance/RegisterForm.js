@@ -1,13 +1,16 @@
 import "../styles/registerLogin.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { UserContext } from "../utils/UserContextProvider";
 
-function RegisterForm({ onCancel, onLogin, onLogged }) {
+function RegisterForm({ onCancel, onLogin }) {
+    const { login } = useContext(UserContext);
+
     const [showPassword, setShowPassword] = React.useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
 
@@ -62,7 +65,7 @@ function RegisterForm({ onCancel, onLogin, onLogged }) {
         });
         const data = await response.json();
         if (date.err) alert(data.err);
-        else onLogged(data);
+        else login(data);
     };
 
     return (

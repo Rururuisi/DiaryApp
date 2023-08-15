@@ -1,10 +1,10 @@
 import React from "react";
 import Profile from "../components/Profile";
 
-export default function Account({ user }) {
+export default function Account() {
     return (
         <div>
-            <Profile user={user} />
+            <Profile />
             <br />
             <br />
             <p>（能够修改用户的密码，头像等）</p>

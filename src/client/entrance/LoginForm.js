@@ -1,13 +1,16 @@
 import "../styles/registerLogin.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { UserContext } from "../utils/UserContextProvider";
 
-function LoginForm({ onCancel, onRegister, onLogged }) {
+function LoginForm({ onCancel, onRegister }) {
+    const { login } = useContext(UserContext);
+
     const [showPassword, setShowPassword] = React.useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -37,7 +40,7 @@ function LoginForm({ onCancel, onRegister, onLogged }) {
         });
         const data = await response.json();
         if (data.err) alert(data.err);
-        else onLogged(data);
+        else login(data);
     };
 
     return (
