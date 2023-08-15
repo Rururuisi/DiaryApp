@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { registerUser } from "../utils/fetchData";
 import { UserContext } from "../utils/UserContextProvider";
 
 function RegisterForm({ onCancel, onLogin }) {
@@ -56,16 +57,9 @@ function RegisterForm({ onCancel, onLogin }) {
     const handleSubmit = async (evt) => {
         evt.preventDefault();
         const { username, password } = user;
-        const response = await fetch("/api/user/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ username, password }),
-        });
-        const data = await response.json();
-        if (date.err) alert(data.err);
-        else login(data);
+        const userObj = await registerUser({ username, password });
+        if (userObj.err) alert(userObj.err);
+        else login(userObj);
     };
 
     return (

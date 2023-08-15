@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { loginUser } from "../utils/fetchData";
 import { UserContext } from "../utils/UserContextProvider";
 
 function LoginForm({ onCancel, onRegister }) {
@@ -31,16 +32,9 @@ function LoginForm({ onCancel, onRegister }) {
     const handleSubmit = async (evt) => {
         evt.preventDefault();
         const { username, password } = user;
-        const response = await fetch("/api/user/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ username, password }),
-        });
-        const data = await response.json();
-        if (data.err) alert(data.err);
-        else login(data);
+        const userObj = await loginUser({ username, password });
+        if (userObj.err) alert(userObj.err);
+        else login(userObj);
     };
 
     return (
