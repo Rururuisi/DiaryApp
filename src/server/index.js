@@ -55,4 +55,15 @@ app.get("/", async (req, res) => {
 app.use("/api/user", userRoutes);
 app.use("/api/diary", diaryRoutes);
 
+app.use((err, req, res, next) => {
+    const { status = 500, message = "Something went wrong!" } = err;
+    res.status(500);
+    res.json({ status, err: message });
+});
+
+app.all("*", (req, res) => {
+    res.status(404);
+    res.json("notFound");
+});
+
 app.listen(PORT, () => console.log(`Listening on port ${PORT}!`));
