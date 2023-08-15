@@ -34,7 +34,7 @@ export default function Profile() {
             />
             <CardMedia
                 sx={{ height: 250 }}
-                image={imageUrl}
+                image={user?.profileBG?.url || imageUrl}
                 title="avatar background"
             />
             <CardContent>
@@ -42,7 +42,8 @@ export default function Profile() {
                     {user.displayName || user.username}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    This person is lazy, didn't leave anything here...
+                    {user.intro ||
+                        "This person is lazy, didn't leave anything here..."}
                 </Typography>
             </CardContent>
         </Card>
