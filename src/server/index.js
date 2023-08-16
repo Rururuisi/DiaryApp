@@ -53,7 +53,7 @@ app.get("/", async (req, res) => {
 });
 
 app.use("/api/user", userRoutes);
-app.use("/api/diary", diaryRoutes);
+app.use("/api/user/:userId/diary", diaryRoutes);
 
 app.use((err, req, res, next) => {
     const { status = 500, message = "Something went wrong!" } = err;

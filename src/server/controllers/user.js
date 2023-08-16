@@ -5,8 +5,7 @@ const saltRounds = 12;
 
 module.exports.getUser = async (req, res) => {
     const { username } = req.body;
-    console.log(req.body);
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ username }).populate("diaries");
     if (!user) {
         return res.json({ err: "User does not exist!" });
     }

@@ -1,7 +1,9 @@
 import "../styles/writeForm.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from "@mui/material/Button";
 import CheckIcon from "@mui/icons-material/Check";
+import { UserContext } from "../utils/UserContextProvider";
+import { createDiary, updateDiary } from "../utils/fetchData";
 import {
     weathers,
     getCurrentDateObj,
@@ -19,6 +21,7 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
     };
 
     const [diary, setDiary] = useState(initialDiary);
+    const { user } = useContext(UserContext);
 
     const handleDate = (evt) => {
         const [year, month, date] = evt.target.value.split("-");
@@ -40,19 +43,20 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
     const formSubmit = async (evt) => {
         evt.preventDefault();
         try {
-            const endpoint = diary._id
-                ? `/api/diary/${diary._id}`
-                : "/api/diary/new";
             const diaryData = {
                 ...diary,
                 last_modified_time: getCurrentTimeStr(),
             };
-            const response = await fetch(endpoint, {
-                method: diary._id ? "PUT" : "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(diaryData),
-            });
-            const newDiaryData = await response.json();
+            let newDiaryData;
+            if (diaryData._id) {
+                newDiaryData = await updateDiary(
+                    user._id,
+                    diaryData._id,
+                    diaryData
+                );
+            } else {
+                newDiaryData = await createDiary(user._id, diaryData);
+            }
             setDiary(newDiaryData);
             onReadForm(newDiaryData);
         } catch (err) {

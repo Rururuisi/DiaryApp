@@ -18,7 +18,7 @@ export const UserContextProvider = ({ children }) => {
             const userObj = await getUserObj({ username: sessionUser });
             login(userObj);
         }
-    }, []);
+    });
 
     const login = (userObj) => {
         setIsAuth(true);

@@ -16,6 +16,7 @@
   margin: auto;
   padding: 50px 30px 90px 30px;
   width: 80%;
+  max-width: 500px;
   background-color: #fff;
   border-radius: 10px;
   text-align: center;

@@ -1,3 +1,10 @@
 .Diary * {
   text-align: left;
 }
+
+.noDiary {
+  margin-top: 30vh;
+  font-size: 24px;
+  text-align: center;
+  color: #aaa;
+}

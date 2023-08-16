@@ -1,14 +1,12 @@
 const express = require("express");
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 const diary = require("../controllers/diary");
 const catchAsync = require("../utils/catchAsync");
 
-router.route("/").get(catchAsync(diary.index));
-
-router.route("/new").post(catchAsync(diary.createDiary));
+router.route("/").post(catchAsync(diary.createDiary));
 
 router
-    .route("/:id")
+    .route("/:diaryId")
     .put(catchAsync(diary.updateDiary))
     .delete(catchAsync(diary.deleteDiary));
 

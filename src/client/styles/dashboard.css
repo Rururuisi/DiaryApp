@@ -1,0 +1,8 @@
+.Dashboard header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Dashboard header button {
+    cursor: pointer;
+}

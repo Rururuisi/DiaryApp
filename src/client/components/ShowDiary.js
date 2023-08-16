@@ -1,14 +1,17 @@
 import "../styles/showDiary.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
 import Typography from "@mui/material/Typography";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { getWeather } from "../utils/diaryInfoTools";
 import DeleteAlert from "./DeleteAlert";
+import { UserContext } from "../utils/UserContextProvider";
+import { deleteDiary } from "../utils/fetchData";
 
 export default function ShowDiary({ diary, onEditForm, onClosePopup }) {
     const paragraphs = diary.content.split("\n");
+    const { user } = useContext(UserContext);
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -19,11 +22,7 @@ export default function ShowDiary({ diary, onEditForm, onClosePopup }) {
     const handleDelete = async () => {
         closeAnnounce();
         try {
-            await fetch(`/api/diary/${diary._id}`, {
-                method: "DELETE",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(diary),
-            });
+            deleteDiary(user._id, diary._id);
             onClosePopup(false);
         } catch (err) {
             alert(err.message);

@@ -1,10 +1,15 @@
 import "../styles/diary.css";
-import React from "react";
+import React, { useContext } from "react";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import PopupPage from "../components/PopupPage";
 import DiaryCard from "../components/DiaryCard";
+import { UserContext } from "../utils/UserContextProvider";
+import DiarySortFilter from "../components/DiarySortFilter";
 
-export default function Diary({ diaries }) {
+export default function Diary() {
+    const { user } = useContext(UserContext);
+    const diaries = user.diaries;
+
     return (
         <div className="Diary">
             <header>
@@ -12,8 +17,8 @@ export default function Diary({ diaries }) {
                     Diary <AutoStoriesIcon />
                 </h1>
             </header>
-            <nav>[---过滤/筛选工具 + 正逆序排序 + 批量删除---]</nav>
-            {diaries &&
+            <DiarySortFilter />
+            {diaries.length ? (
                 diaries.map((diary) => (
                     <PopupPage
                         key={diary._id}
@@ -21,7 +26,12 @@ export default function Diary({ diaries }) {
                         pageContent={"ShowDiary"}
                         toggleComponent={<DiaryCard diary={diary} />}
                     />
-                ))}
+                ))
+            ) : (
+                <p class="noDiary">
+                    <small>NO DIARY</small>
+                </p>
+            )}
         </div>
     );
 }
