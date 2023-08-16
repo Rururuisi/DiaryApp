@@ -12,13 +12,15 @@ import {
 } from "../utils/diaryInfoTools";
 
 export default function WriteForm({ diaryCurrentState, onReadForm }) {
-    let initialDiary = diaryCurrentState || {
+    let emptyDiary = {
         title: "",
         created_date: getCurrentDateObj(),
         weather: "sunny",
         content: "",
         last_modified_time: "",
     };
+
+    let initialDiary = diaryCurrentState || emptyDiary;
 
     const [diary, setDiary] = useState(initialDiary);
     const { user } = useContext(UserContext);

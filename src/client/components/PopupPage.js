@@ -19,7 +19,7 @@ export default function PopupPage({ diary, pageContent, toggleComponent }) {
     });
 
     const toggleDrawer = (newOpen) => {
-        setPageForm((prevData) => ({ ...prevData, form: pageContent }));
+        setPageForm({ currentDiary: diary, form: pageContent });
         setOpen(newOpen);
     };
 
