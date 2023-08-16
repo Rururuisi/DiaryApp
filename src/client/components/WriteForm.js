@@ -134,6 +134,7 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                         backgroundColor: (theme) => theme.palette.primary.dark,
                         borderRadius: 25,
                         minWidth: 0,
+                        zIndex: 1,
                     }}
                 >
                     <CheckIcon />
