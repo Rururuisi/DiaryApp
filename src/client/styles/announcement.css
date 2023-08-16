@@ -10,20 +10,36 @@
 
 .Announcement {
   position: fixed;
-  top: 15vh;
+  top: 12vh;
   left: 0;
   right: 0;
   margin: auto;
   padding: 50px 30px 90px 30px;
   width: 80%;
-  max-width: 500px;
+  max-width: 400px;
   background-color: #fff;
   border-radius: 10px;
   text-align: center;
 }
 
-.Announcement h2 {
+.Announcement header {
+  margin-bottom: 15px;
+}
+
+.Announcement header h2, .Announcement header p {
+  margin: 0;
+  padding: 0;
   color: black;
+  text-align: center;
+}
+
+.Announcement header p {
+  color: grey;
+}
+
+.Announcement div {
+  max-height: 220px;
+  overflow: scroll;
 }
 
 .Announcement p {

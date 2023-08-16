@@ -16,8 +16,7 @@ export default function Dashboard() {
     return (
         <>
             {isOpen && (
-                <Announcement onClose={handleLogClose}>
-                    <h2>更新日志</h2>
+                <Announcement title={"更新日志"} onClose={handleLogClose}>
                     <p style={{ color: "red" }}>
                         目前进度：
                         <br />
@@ -25,8 +24,7 @@ export default function Dashboard() {
                         <br />
                         -- 可注册登录账号,日记为用户私有，其他用户不可见;
                         <br />
-                        --
-                        只要不关闭该标签页，登录不会过期，无需重登，手机直接退浏览器不关页面下次就不需要重新登录;
+                        -- 只要不关闭该标签页或浏览器，登录不会过期，无需重登;
                     </p>
                     <p style={{ color: "grey" }}>
                         下一更新内容：
