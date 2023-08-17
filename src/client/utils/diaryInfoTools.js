@@ -26,13 +26,6 @@ const getCurrentDateObj = () => {
     return { year, month, date, weekday: day };
 };
 
-const getCurrentTimeStr = () => {
-    const currentDate = new Date();
-    const hours = currentDate.getHours();
-    const minutes = currentDate.getMinutes().toString().padStart(2, "0");
-    return `${hours}:${minutes}`;
-};
-
 const weekday = ["Mon.", "Tue.", "Wed.", "Thurs.", "Fri.", "Sat.", "Sun."];
 
 const getWeekday_MDY = (specificDate, splitStr) => {
@@ -51,7 +44,6 @@ export {
     weathers,
     getWeather,
     getCurrentDateObj,
-    getCurrentTimeStr,
     getWeekday_MDY,
     getWeekday_YMD,
 };
