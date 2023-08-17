@@ -8,8 +8,8 @@
 
 .AccountBtn button{
     margin-bottom: 20px;
-    width: 250px;
-    height: 35px;
+    width: 300px;
+    height: 50px;
     font-size: 18px;
     color: #aaa;
     background-color: #fff;
@@ -23,13 +23,13 @@
 }
 
 .AccountBtn .logoutBtn {
-    margin-top: 20px;
+    margin-top: 40px;
     color: #fff;
-    background-color: rgb(206, 0, 0);
+    background-color: rgb(246, 72, 72);
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .AccountBtn .logoutBtn:hover {
     color: #fff;
-    background-color: rgb(159, 0, 0);
+    background-color: rgb(207, 3, 3);
 }
