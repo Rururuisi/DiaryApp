@@ -8,3 +8,8 @@
   text-align: center;
   color: #aaa;
 }
+
+.ToolBar {
+  display: flex;
+  justify-content: space-between;
+}

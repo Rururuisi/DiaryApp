@@ -37,3 +37,9 @@ module.exports.loginUser = async (req, res) => {
         res.json({ err: "Incorrect password!" });
     }
 };
+
+module.exports.deleteUser = async (req, res) => {
+    const { id } = req.params;
+    await User.findByIdAndDelete(id);
+    res.json("Account deleted!");
+};

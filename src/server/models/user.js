@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
+const Diary = require("./diary");
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -28,6 +29,16 @@ const userSchema = new mongoose.Schema({
             ref: "Diary",
         },
     ],
+});
+
+userSchema.post("findOneAndDelete", async function (doc) {
+    if (doc) {
+        await Diary.deleteMany({
+            _id: {
+                $in: doc.diaries,
+            },
+        });
+    }
 });
 
 userSchema.plugin(uniqueValidator, { message: "Username already exists!" });

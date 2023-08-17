@@ -1,6 +1,7 @@
 const userEndpoint = "/api/user";
 const registerEndpoint = "/api/user/register";
 const loginEndpoint = "/api/user/login";
+const deleteUserEndpoint = (userId) => `/api/user/${userId}`;
 const newDiaryEndpoint = (userId) => `/api/user/${userId}/diary`;
 const diaryEndpoint = (userId, diaryId) =>
     `/api/user/${userId}/diary/${diaryId}`;
@@ -29,6 +30,10 @@ const loginUser = (bodyData) => {
     return fetchUser(loginEndpoint, bodyData);
 };
 
+const deleteUser = async (userId) => {
+    await fetch(deleteUserEndpoint(userId), { method: "DELETE" });
+};
+
 const fetchDiary = async (endpoint, diaryData, method) => {
     const response = await fetch(endpoint, {
         method,
@@ -52,9 +57,10 @@ const deleteDiary = async (userId, diaryId) => {
 };
 
 export {
+    getUserObj,
     registerUser,
     loginUser,
-    getUserObj,
+    deleteUser,
     createDiary,
     updateDiary,
     deleteDiary,
