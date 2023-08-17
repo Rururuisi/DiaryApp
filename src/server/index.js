@@ -35,6 +35,7 @@ app.use(session(sessionOptions));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
+    console.log(req.method, req.path);
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
         "Access-Control-Allow-Headers",

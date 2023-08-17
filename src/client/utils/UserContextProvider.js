@@ -7,35 +7,38 @@ import { getUserObj } from "./fetchData";
 
 export const UserContext = createContext(null);
 
-const sessionUser = window.sessionStorage.getItem("username");
+const sessionUser = () => window.sessionStorage.getItem("username");
 
 export const UserContextProvider = ({ children }) => {
+    const [session, setSession] = useState(sessionUser());
     const [user, setUser] = useState(null);
     const [isAuth, setIsAuth] = useState(false);
     const [toggle, setToggle] = useState(false);
 
-    const fetchUser = async () => {
-        if (sessionUser) {
-            const userObj = await getUserObj({ username: sessionUser });
-            setUser(userObj);
-            setIsAuth(true);
-        }
+    const fetchUser = async (username) => {
+        const userObj = await getUserObj({ username });
+        setUser(userObj);
+        setIsAuth(true);
     };
 
     useEffect(() => {
-        fetchUser().catch((err) => {
-            console.log(err.message);
-        });
+        if (session) {
+            fetchUser(session).catch((err) => {
+                console.log(err.message);
+            });
+        }
     }, [toggle]);
 
     const login = (userObj) => {
         window.sessionStorage.setItem("username", userObj.username);
+        setSession(sessionUser());
         setUser(userObj);
         setIsAuth(true);
     };
 
     const logout = () => {
         window.sessionStorage.clear();
+        setSession(null);
         setUser(null);
         setIsAuth(false);
     };
@@ -49,7 +52,7 @@ export const UserContextProvider = ({ children }) => {
             <UserContext.Provider
                 value={{ user, isAuth, toggleFetch, login, logout }}
             >
-                {sessionUser ? (
+                {session ? (
                     isAuth && user ? (
                         children
                     ) : (

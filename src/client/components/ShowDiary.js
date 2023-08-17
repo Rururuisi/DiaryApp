@@ -23,8 +23,8 @@ export default function ShowDiary({ diary, onEditForm, onClosePopup }) {
         closeAnnounce();
         try {
             deleteDiary(user._id, diary._id);
-            toggleFetch();
             onClosePopup(false);
+            toggleFetch();
         } catch (err) {
             alert(err.message);
         }

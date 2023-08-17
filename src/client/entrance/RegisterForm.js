@@ -159,7 +159,11 @@ function RegisterForm({ onCancel, onLogin }) {
                         />
                     </FormControl>
                     <div className="btnGroup">
-                        <button onClick={() => onCancel()} className="leftBtn">
+                        <button
+                            type="button"
+                            onClick={() => onCancel()}
+                            className="leftBtn"
+                        >
                             Cancel
                         </button>
                         <button

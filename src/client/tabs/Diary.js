@@ -8,7 +8,6 @@ import DiarySortFilter from "../components/DiarySortFilter";
 
 export default function Diary() {
     const { user } = useContext(UserContext);
-
     const diaries = user.diaries;
 
     return (
@@ -19,7 +18,7 @@ export default function Diary() {
                 </h1>
             </header>
             <DiarySortFilter />
-            {diaries && diaries.length ? (
+            {diaries.length ? (
                 diaries.map((diary) => (
                     <PopupPage
                         key={diary._id}

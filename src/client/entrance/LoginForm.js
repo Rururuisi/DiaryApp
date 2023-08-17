@@ -97,7 +97,11 @@ function LoginForm({ onCancel, onRegister }) {
                         />
                     </FormControl>
                     <div className="btnGroup">
-                        <button onClick={() => onCancel()} className="leftBtn">
+                        <button
+                            type="button"
+                            onClick={() => onCancel()}
+                            className="leftBtn"
+                        >
                             Cancel
                         </button>
                         <button type="submit" className="rightBtn">
