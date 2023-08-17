@@ -37,9 +37,12 @@ const diarySchema = new mongoose.Schema({
             required: true,
         },
     },
-    last_modified_time: {
+    created_time: {
         type: String,
         required: true,
+    },
+    last_modified_time: {
+        type: String,
     },
     weather: {
         type: String,
@@ -50,11 +53,6 @@ const diarySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "User",
-    //     required: true,
-    // },
 });
 
 module.exports = mongoose.model("Diary", diarySchema);

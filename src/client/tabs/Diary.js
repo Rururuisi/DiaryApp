@@ -1,5 +1,5 @@
 import "../styles/diary.css";
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import PopupPage from "../components/PopupPage";
 import DiaryCard from "../components/DiaryCard";
@@ -7,7 +7,12 @@ import { UserContext } from "../utils/UserContextProvider";
 import DiarySortFilter from "../components/DiarySortFilter";
 
 export default function Diary() {
-    const { user } = useContext(UserContext);
+    const { user, toggleFetch } = useContext(UserContext);
+
+    useEffect(() => {
+        toggleFetch();
+    }, []);
+
     const diaries = user.diaries;
 
     return (
@@ -18,7 +23,7 @@ export default function Diary() {
                 </h1>
             </header>
             <DiarySortFilter />
-            {diaries.length ? (
+            {diaries && diaries.length ? (
                 diaries.map((diary) => (
                     <PopupPage
                         key={diary._id}

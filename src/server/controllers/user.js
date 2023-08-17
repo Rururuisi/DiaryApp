@@ -26,7 +26,7 @@ module.exports.createUser = async (req, res) => {
 
 module.exports.loginUser = async (req, res) => {
     const { username, password } = req.body;
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ username }).populate("diaries");
     if (!user) {
         return res.json({ err: "User does not exist!" });
     }

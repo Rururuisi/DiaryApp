@@ -12,30 +12,42 @@ const sessionUser = window.sessionStorage.getItem("username");
 export const UserContextProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [isAuth, setIsAuth] = useState(false);
+    const [toggle, setToggle] = useState(false);
 
-    useEffect(async () => {
+    const fetchUser = async () => {
         if (sessionUser) {
             const userObj = await getUserObj({ username: sessionUser });
-            login(userObj);
+            setUser(userObj);
+            setIsAuth(true);
         }
-    });
+    };
+
+    useEffect(() => {
+        fetchUser().catch((err) => {
+            console.log(err.message);
+        });
+    }, [toggle]);
 
     const login = (userObj) => {
-        setIsAuth(true);
-        setUser(userObj);
         window.sessionStorage.setItem("username", userObj.username);
+        setUser(userObj);
+        setIsAuth(true);
     };
 
     const logout = () => {
-        window.sessionStorage.setItem("username", null);
+        window.sessionStorage.clear();
         setUser(null);
         setIsAuth(false);
+    };
+
+    const toggleFetch = () => {
+        setToggle(!toggle);
     };
 
     return (
         <ThemeProvider theme={theme}>
             <UserContext.Provider
-                value={{ user, isAuth, setUser, login, logout }}
+                value={{ user, isAuth, toggleFetch, login, logout }}
             >
                 {sessionUser ? (
                     isAuth && user ? (

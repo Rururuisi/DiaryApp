@@ -11,7 +11,7 @@ import { deleteDiary } from "../utils/fetchData";
 
 export default function ShowDiary({ diary, onEditForm, onClosePopup }) {
     const paragraphs = diary.content.split("\n");
-    const { user } = useContext(UserContext);
+    const { user, toggleFetch } = useContext(UserContext);
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -23,6 +23,7 @@ export default function ShowDiary({ diary, onEditForm, onClosePopup }) {
         closeAnnounce();
         try {
             deleteDiary(user._id, diary._id);
+            toggleFetch();
             onClosePopup(false);
         } catch (err) {
             alert(err.message);
@@ -40,23 +41,37 @@ export default function ShowDiary({ diary, onEditForm, onClosePopup }) {
                 <p id="dateWeather">
                     <Typography
                         component="div"
-                        margin="0 0 10px 0"
                         display="flex"
                         justifyContent={"space-between"}
                     >
-                        <div>
+                        <div style={{ color: "black" }}>
                             <small>{diary.created_date.weekday}</small>{" "}
                             <small>{`${diary.created_date.month}/${diary.created_date.date}/${diary.created_date.year}`}</small>{" "}
                             <small>{getWeather(diary.weather)}</small>
                         </div>
-                        <div>
-                            <small>{diary.last_modified_time}</small>
+                        <div style={{ fontSize: "14px", color: "grey" }}>
+                            <small>
+                                @
+                                {diary.created_time || diary.last_modified_time}
+                            </small>
                         </div>
                     </Typography>
                 </p>
                 {paragraphs.map((paragraph, idx) => (
                     <p key={idx}>{paragraph}</p>
                 ))}
+                {diary.last_modified_time ? (
+                    <Typography
+                        component="div"
+                        sx={{
+                            marginTop: "40px",
+                            color: "grey",
+                            fontSize: "14px",
+                        }}
+                    >
+                        <small>last-modified @{diary.last_modified_time}</small>
+                    </Typography>
+                ) : null}
                 <Button
                     type="submit"
                     variant="contained"

@@ -17,7 +17,7 @@ export default function Profile() {
     const { user } = useContext(UserContext);
 
     return (
-        <Card sx={{ Width: "100%" }}>
+        <Card sx={{ Width: "100%", boxShadow: "none" }}>
             <Avatar
                 sx={{
                     position: "absolute",

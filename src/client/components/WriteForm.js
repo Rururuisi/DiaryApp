@@ -8,7 +8,6 @@ import {
     weathers,
     getCurrentDateObj,
     getWeekday_YMD,
-    getCurrentTimeStr,
 } from "../utils/diaryInfoTools";
 
 export default function WriteForm({ diaryCurrentState, onReadForm }) {
@@ -17,13 +16,12 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
         created_date: getCurrentDateObj(),
         weather: "sunny",
         content: "",
-        last_modified_time: "",
     };
 
     let initialDiary = diaryCurrentState || emptyDiary;
 
     const [diary, setDiary] = useState(initialDiary);
-    const { user } = useContext(UserContext);
+    const { user, toggleFetch } = useContext(UserContext);
 
     const handleDate = (evt) => {
         const [year, month, date] = evt.target.value.split("-");
@@ -45,20 +43,37 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
     const formSubmit = async (evt) => {
         evt.preventDefault();
         try {
-            const diaryData = {
-                ...diary,
-                last_modified_time: getCurrentTimeStr(),
-            };
             let newDiaryData;
-            if (diaryData._id) {
+            if (diary._id) {
+                const diaryData = {
+                    ...diary,
+                    last_modified_time: new Date().toLocaleTimeString([], {
+                        month: "2-digit",
+                        day: "2-digit",
+                        year: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                    }),
+                };
                 newDiaryData = await updateDiary(
                     user._id,
                     diaryData._id,
                     diaryData
                 );
             } else {
+                const diaryData = {
+                    ...diary,
+                    created_time: new Date().toLocaleTimeString([], {
+                        month: "2-digit",
+                        day: "2-digit",
+                        year: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                    }),
+                };
                 newDiaryData = await createDiary(user._id, diaryData);
             }
+            toggleFetch();
             setDiary(newDiaryData);
             onReadForm(newDiaryData);
         } catch (err) {

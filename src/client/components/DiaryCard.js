@@ -28,10 +28,8 @@ export default function DiaryCard({ diary }) {
                             <small>{`${diary.created_date.month}/${diary.created_date.date}/${diary.created_date.year}`}</small>{" "}
                             <small>{getWeather(diary.weather)}</small>
                         </div>
-                        <div>
-                            <small style={{ color: "grey" }}>
-                                {diary.last_modified_time}
-                            </small>
+                        <div style={{ color: "grey" }}>
+                            <small>@{diary.created_time}</small>
                         </div>
                     </Typography>
                     <Typography
