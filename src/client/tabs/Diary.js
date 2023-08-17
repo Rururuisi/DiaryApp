@@ -7,11 +7,7 @@ import { UserContext } from "../utils/UserContextProvider";
 import DiarySortFilter from "../components/DiarySortFilter";
 
 export default function Diary() {
-    const { user, toggleFetch } = useContext(UserContext);
-
-    useEffect(() => {
-        toggleFetch();
-    }, []);
+    const { user } = useContext(UserContext);
 
     const diaries = user.diaries;
 
