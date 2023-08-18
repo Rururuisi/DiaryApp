@@ -43,7 +43,7 @@ export default function Account() {
                 <DeleteAlert
                     onClose={closeAlert}
                     onDelete={handleDelete}
-                    deleteObjName={"account"}
+                    deleteObjName={"the account"}
                 />
             )}
         </>

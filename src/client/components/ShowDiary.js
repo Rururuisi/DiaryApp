@@ -36,7 +36,7 @@ export default function ShowDiary({ diary, onEditForm, onClosePopup }) {
                 <DeleteAlert
                     onClose={closeAnnounce}
                     onDelete={handleDelete}
-                    deleteObjName={"diary"}
+                    deleteObjName={"the diary"}
                 />
             )}
             <div className="ShowDiary">
