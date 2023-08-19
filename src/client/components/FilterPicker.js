@@ -18,7 +18,7 @@ const formStyle = {
 
 const formLabelStyle = { fontSize: "14px", lineHeight: "15px" };
 
-export default function SelectSmall() {
+export default function SelectSmall({ handleFilter }) {
     const { user } = useContext(UserContext);
     const startYear = parseInt(new Date(user.created_date).getFullYear());
     const endYear = parseInt(new Date().getFullYear());
@@ -30,6 +30,7 @@ export default function SelectSmall() {
 
     const handleChange = (evt, field) => {
         setFilter((prev) => ({ ...prev, [field]: evt.target.value }));
+        handleFilter({ ...filter, [field]: evt.target.value });
     };
 
     return (

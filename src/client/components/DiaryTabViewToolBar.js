@@ -1,16 +1,35 @@
 import "../styles/diary.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SortDiary from "./SortDiary";
 import Chip from "@mui/material/Chip";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import FilterPicker from "./FilterPicker";
 
-function DiaryTabViewToolBar({ recentOrder, oldestOrder, displaySelectPage }) {
+function DiaryTabViewToolBar({
+    recentOrder,
+    oldestOrder,
+    displaySelectPage,
+    onFilter,
+    disableFilter,
+}) {
     const [isFilter, setIsFilter] = useState(false);
+
+    useEffect(() => {
+        if (!isFilter) {
+            disableFilter();
+        }
+    }, [isFilter]);
 
     const toggleFilter = () => {
         setIsFilter(!isFilter);
+    };
+
+    const handleFilter = ({ year, month }) => {
+        console.log(isFilter);
+        if (isFilter) {
+            onFilter(year, month);
+        }
     };
 
     return (
@@ -50,7 +69,7 @@ function DiaryTabViewToolBar({ recentOrder, oldestOrder, displaySelectPage }) {
             </nav>
             {isFilter && (
                 <div style={{ marginTop: "15px" }}>
-                    <FilterPicker />
+                    <FilterPicker handleFilter={handleFilter} />
                 </div>
             )}
         </div>

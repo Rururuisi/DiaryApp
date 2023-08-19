@@ -1,16 +1,44 @@
 import "../styles/diary.css";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import DiaryTabViewToolBar from "../components/DiaryTabViewToolBar";
 import DisplayDiary from "../components/DisplayDiaries";
 import MultiDeleteForm from "../components/MultiDeleteForm";
 import { UserContext } from "../utils/UserContextProvider";
 
+const handleFilter = (year, month, diaries) => {
+    const yearStr = year.toString();
+    const monthStr = month.toString();
+    let filterDiaries;
+    if (yearStr !== "" && monthStr !== "") {
+        filterDiaries = diaries.filter(
+            (diary) =>
+                diary.created_date.year === yearStr &&
+                diary.created_date.month === monthStr.padStart(2, 0)
+        );
+    } else if (yearStr !== "") {
+        filterDiaries = diaries.filter(
+            (diary) => diary.created_date.year === yearStr
+        );
+    } else if (monthStr !== "") {
+        filterDiaries = diaries.filter(
+            (diary) => diary.created_date.month === monthStr.padStart(2, 0)
+        );
+    } else {
+        filterDiaries = diaries;
+    }
+    return filterDiaries;
+};
+
 export default function Diary() {
     const { user } = useContext(UserContext);
 
     const [isRecent, setIsRecent] = useState(true);
     const [isSelect, setIsSelect] = useState(false);
+    const [filter, setFilter] = useState({
+        year: "",
+        month: "",
+    });
 
     const oldestOrder = () => {
         setIsRecent(false);
@@ -28,13 +56,30 @@ export default function Diary() {
         setIsSelect(false);
     };
 
-    const diaries = isRecent ? user.diaries.slice().reverse() : user.diaries;
+    //filter
+    const onFilter = (year, month) => {
+        setFilter({ year, month });
+    };
+
+    const disableFilter = () => {
+        setFilter({ year: "", month: "" });
+    };
+
+    const diaries = isRecent
+        ? handleFilter(
+              filter.year,
+              filter.month,
+              user.diaries.slice().reverse()
+          )
+        : handleFilter(filter.year, filter.month, user.diaries);
 
     const viewToolBar = (
         <DiaryTabViewToolBar
             recentOrder={recentOrder}
             oldestOrder={oldestOrder}
             displaySelectPage={displaySelectPage}
+            onFilter={onFilter}
+            disableFilter={disableFilter}
         />
     );
 
