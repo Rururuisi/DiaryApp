@@ -56,8 +56,19 @@ function RegisterForm({ onCancel, onLogin }) {
 
     const handleSubmit = async (evt) => {
         evt.preventDefault();
+        const created_date = new Date().toLocaleTimeString([], {
+            month: "2-digit",
+            day: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
         const { username, password } = user;
-        const userObj = await registerUser({ username, password });
+        const userObj = await registerUser({
+            username,
+            password,
+            created_date,
+        });
         if (userObj.err) alert(userObj.err);
         else login(userObj);
     };

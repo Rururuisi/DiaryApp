@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
     displayName: String,
     email: String,
     intro: String,
+    created_date: {
+        type: String,
+        require: true,
+    },
     avatar: {
         url: String,
         filename: String,
