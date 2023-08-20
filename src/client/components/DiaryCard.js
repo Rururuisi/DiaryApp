@@ -14,6 +14,7 @@ export default function DiaryCard({ diary }) {
                 boxShadow: "1px 1px 5px #bbb",
                 marginTop: "20px",
                 cursor: "pointer",
+                textAlign: "left",
                 "&:hover": {
                     backgroundColor: "#eee",
                 },
