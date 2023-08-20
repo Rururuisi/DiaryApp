@@ -16,7 +16,7 @@ export default function DisplayDiary({
     return (
         <>
             {toolbar}
-            <FormGroup>
+            <FormGroup id="FormGroup">
                 {diaries.length ? (
                     diaries.map((diary) =>
                         selectMode ? (

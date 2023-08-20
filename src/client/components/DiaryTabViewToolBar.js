@@ -34,7 +34,7 @@ function DiaryTabViewToolBar({
 
     return (
         <div>
-            <nav className="ToolBar">
+            <nav className="ToolBar" style={{ padding: "20px 24px" }}>
                 <div className="Filter">
                     {isFilter ? (
                         <div>

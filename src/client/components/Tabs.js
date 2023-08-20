@@ -73,7 +73,7 @@ function Tabs() {
             <TabPanel value="timeline">
                 <Dashboard />
             </TabPanel>
-            <TabPanel value="diary">
+            <TabPanel sx={{ padding: "24px 0" }} value="diary">
                 <Diary />
             </TabPanel>
             <TabPanel value="calendar">

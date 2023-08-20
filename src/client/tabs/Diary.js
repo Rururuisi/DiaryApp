@@ -90,14 +90,16 @@ export default function Diary() {
                     Diary <AutoStoriesIcon />
                 </h1>
             </header>
-            {isSelect ? (
-                <MultiDeleteForm
-                    diaries={diaries}
-                    displayDiaries={displayDiaries}
-                />
-            ) : (
-                <DisplayDiary diaries={diaries} toolbar={viewToolBar} />
-            )}
+            <main>
+                {isSelect ? (
+                    <MultiDeleteForm
+                        diaries={diaries}
+                        displayDiaries={displayDiaries}
+                    />
+                ) : (
+                    <DisplayDiary diaries={diaries} toolbar={viewToolBar} />
+                )}
+            </main>
         </div>
     );
 }
