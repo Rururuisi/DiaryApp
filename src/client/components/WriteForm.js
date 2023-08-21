@@ -2,6 +2,8 @@ import "../styles/writeForm.css";
 import React, { useState, useContext } from "react";
 import Button from "@mui/material/Button";
 import CheckIcon from "@mui/icons-material/Check";
+import { TextareaAutosize } from "@mui/base/TextareaAutosize";
+import { styled } from "@mui/system";
 import { UserContext } from "../utils/UserContextProvider";
 import { createDiary, updateDiary } from "../utils/fetchData";
 import {
@@ -9,6 +11,38 @@ import {
     getCurrentDateObj,
     getWeekday_YMD,
 } from "../utils/diaryInfoTools";
+
+const StyledTextarea = styled(TextareaAutosize)(
+    ({ theme }) => `
+    width: 100%;
+    font-family: IBM Plex Sans, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: monospace;
+    line-height: 1.5;
+    padding: 0 0 20px 0;
+    border-radius: 0;
+    color: #535353;
+    background: #fff;
+    border: none;
+    box-shadow: none;
+    resize: none;
+  
+    &:hover {
+      border: none;
+    }
+  
+    &:focus {
+      border: none;
+      box-shadow: none;
+    }
+  
+    // firefox
+    &:focus-visible {
+      outline: 0;
+    }
+  `
+);
 
 export default function WriteForm({ diaryCurrentState, onReadForm }) {
     let emptyDiary = {
@@ -82,7 +116,7 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
     };
 
     return (
-        <div>
+        <div className="WriteFormContainer">
             <div className="dateTopDisplay">
                 {diary.created_date.weekday}{" "}
                 {`${diary.created_date.month}/${diary.created_date.date}/${diary.created_date.year}`}
@@ -126,13 +160,12 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                     </div>
                 </section>
                 <hr />
-                <textarea
-                    id="content"
-                    name="content"
-                    placeholder="Type your content here..."
+                <StyledTextarea
+                    aria-label="content"
+                    minRows={12}
                     value={diary.content}
                     onChange={(evt) => handleDiary(evt, "content")}
-                    required
+                    placeholder="Type your content here..."
                 />
                 <hr />
                 <Button

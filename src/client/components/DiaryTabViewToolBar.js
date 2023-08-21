@@ -34,7 +34,7 @@ function DiaryTabViewToolBar({
 
     return (
         <div>
-            <nav className="ToolBar" style={{ padding: "20px 24px" }}>
+            <nav className="ToolBar" style={{ padding: "0 24px" }}>
                 <div className="Filter">
                     {isFilter ? (
                         <div>
@@ -68,7 +68,7 @@ function DiaryTabViewToolBar({
                 </div>
             </nav>
             {isFilter && (
-                <div style={{ marginTop: "15px" }}>
+                <div style={{ marginTop: "15px", padding: "0 24px" }}>
                     <FilterPicker handleFilter={handleFilter} />
                 </div>
             )}

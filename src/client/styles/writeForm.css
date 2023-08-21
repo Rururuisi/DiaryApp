@@ -1,3 +1,7 @@
+.WriteFormContainer {
+  padding-bottom: 50px;
+}
+
 .dateTopDisplay {
   position: fixed;
   top: 20px;
@@ -41,20 +45,6 @@
 
 .WriteForm div {
   margin-bottom: 20px;
-}
-
-#content {
-  width: 100%;
-  min-height: 65vh;
-  height: 100%;
-  border: none;
-  resize: none;
-  font-size: 20px;
-  color: rgb(83, 83, 83);
-}
-
-#content:focus {
-  outline: none;
 }
 
 #weather {
