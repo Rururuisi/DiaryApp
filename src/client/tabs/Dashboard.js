@@ -2,6 +2,7 @@ import "../styles/dashboard.css";
 import React, { useState } from "react";
 import GrassIcon from "@mui/icons-material/Grass";
 import Announcement from "../components/Announcement";
+import DashboardChart from "../components/DashboardChart";
 
 export default function Dashboard() {
     const [isOpen, setIsOpen] = useState(false);
@@ -48,9 +49,11 @@ export default function Dashboard() {
                     </h1>
                     <button onClick={handleLogOpen}>更新日志</button>
                 </header>
-                <p>
-                    （会放一个卡片在这里，显示目前总日记数，下面显示各项统计数据，例如每种天气分别多少篇）
-                </p>
+                <main>
+                    <DashboardChart />
+                    {/* <hr />
+                    <hr /> */}
+                </main>
             </div>
         </>
     );

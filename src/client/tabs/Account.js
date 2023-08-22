@@ -6,9 +6,9 @@ import SettingList from "../components/SettingList";
 import DeleteAlert from "../components/DeleteAlert";
 import { deleteUser } from "../utils/fetchData";
 
-const settingOne = ["待定", "待定"];
-const settingTwo = ["待定", "待定", "待定"];
-const settingThree = ["待定"];
+const settingTwo = ["Account", "Photos Library"];
+const settingOne = ["Theme", "Dark Mode"];
+const settingThree = ["Unsaved Draft"];
 
 export default function Account() {
     const { user, logout } = useContext(UserContext);
@@ -29,9 +29,9 @@ export default function Account() {
         <>
             <div className="Account" style={{ minHeight: "100vh" }}>
                 <Profile />
-                <SettingList label="DONT'T KNOW YET" options={settingTwo} />
-                <SettingList label="DONT'T KNOW YET" options={settingOne} />
-                <SettingList label="DONT'T KNOW YET" options={settingThree} />
+                <SettingList label="PERSONAL" options={settingTwo} />
+                <SettingList label="APPEARANCE" options={settingOne} />
+                <SettingList label="DRAFT" options={settingThree} />
                 <div className="AccountBtn">
                     <button onClick={() => logout()} className="logoutBtn">
                         Logout

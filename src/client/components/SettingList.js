@@ -29,8 +29,8 @@ function SettingList({ label, options }) {
             <List sx={listStyle} component="nav" aria-label="mailbox folders">
                 {options.map((opt, idx) => (
                     <>
-                        <ListItem button>
-                            <ListItemText primary="待定" />
+                        <ListItem key={idx} button>
+                            <ListItemText primary={opt} />
                         </ListItem>
                         <Divider />
                     </>
