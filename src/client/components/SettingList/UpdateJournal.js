@@ -2,9 +2,9 @@ import React from "react";
 
 function UpdateJournal() {
     return (
-        <div style={{ padding: "10px" }}>
+        <div style={{ padding: "10px 20px", color: "#555" }}>
             <p>
-                目前进度：
+                <b>目前进度：</b>
                 <br />
                 <br />
                 可注册登录退登注销账号,日记为用户私有，其他用户不可见;

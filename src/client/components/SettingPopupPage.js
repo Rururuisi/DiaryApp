@@ -32,6 +32,7 @@ export default function PopupPage({ topLabel, pageContent, toggleComponent }) {
                     top: 0,
                     width: "100%",
                     backgroundColor: "#fff",
+                    boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.3)",
                 }}
             >
                 <BackIcon
