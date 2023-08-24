@@ -21,10 +21,8 @@ function UpdateJournal() {
                 <b>-- Calendar界面:</b> 用花朵标记了含有日记内容的日期
                 <br />
                 <br />
-                <b>
-                    -- Account界面: 目前只完成了 update journal
-                    选项用于查看开发进度
-                </b>
+                <b>-- Account界面:</b> 目前只完成了 update journal
+                选项用于查看开发进度
             </p>
             <br />
             <br />
