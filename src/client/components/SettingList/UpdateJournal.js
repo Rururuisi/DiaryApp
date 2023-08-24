@@ -7,7 +7,8 @@ function UpdateJournal() {
                 目前进度：
                 <br />
                 <br />
-                已初步完成 Dashboard, Diary, Calendar 界面内容的开发
+                可注册登录退登注销账号,日记为用户私有，其他用户不可见;
+                已初步完成 Dashboard, Diary, Calendar 界面内容的开发;
                 <br />
                 <br />
                 <b>-- Dashboard界面:</b> 日记总数与每月日记数统计图
@@ -20,8 +21,10 @@ function UpdateJournal() {
                 <b>-- Calendar界面:</b> 用花朵标记了含有日记内容的日期
                 <br />
                 <br />
-                <b>-- Account界面:</b> 可注册登录退登注销账号,
-                日记为用户私有，其他用户不可见;
+                <b>
+                    -- Account界面: 目前只完成了 update journal
+                    选项用于查看开发进度
+                </b>
             </p>
             <br />
             <br />
