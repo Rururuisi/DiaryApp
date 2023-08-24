@@ -23,6 +23,7 @@
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "dayjs": "^1.11.9",
+    "emoji-picker-react": "^4.4.11",
     "express": "^4.17.1",
     "express-session": "^1.17.3",
     "formidable": "^2",

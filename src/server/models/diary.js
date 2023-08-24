@@ -14,45 +14,57 @@ const weather = [
     "snowy",
 ];
 
-const diarySchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true,
-    },
-    created_date: {
-        year: {
-            type: String,
-            required: true,
-        },
-        month: {
-            type: String,
-            required: true,
-        },
-        date: {
-            type: String,
-            required: true,
-        },
-        weekday: {
-            type: String,
-            required: true,
-        },
-    },
-    created_time: {
-        type: String,
-        required: true,
-    },
-    last_modified_time: {
-        type: String,
-    },
-    weather: {
-        type: String,
-        enum: weather,
-        required: true,
-    },
-    content: {
-        type: String,
-        required: true,
-    },
+const ImageSchema = new mongoose.Schema({
+    url: String,
+    filename: String,
 });
 
-module.exports = mongoose.model("Diary", diarySchema);
+const opts = { toJSON: { virtual: true } };
+
+const DiarySchema = new mongoose.Schema(
+    {
+        title: {
+            type: String,
+            required: true,
+        },
+        created_date: {
+            year: {
+                type: String,
+                required: true,
+            },
+            month: {
+                type: String,
+                required: true,
+            },
+            date: {
+                type: String,
+                required: true,
+            },
+            weekday: {
+                type: String,
+                required: true,
+            },
+        },
+        created_time: {
+            type: String,
+            required: true,
+        },
+        last_modified_time: {
+            type: String,
+        },
+        weather: {
+            type: String,
+            enum: weather,
+            required: true,
+        },
+        mood: String,
+        content: {
+            type: String,
+            required: true,
+        },
+        images: [ImageSchema],
+    },
+    opts
+);
+
+module.exports = mongoose.model("Diary", DiarySchema);

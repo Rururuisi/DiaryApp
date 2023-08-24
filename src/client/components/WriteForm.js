@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import CheckIcon from "@mui/icons-material/Check";
 import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import { styled } from "@mui/system";
+import MoodSelector from "./MoodSelector";
 import { UserContext } from "../utils/UserContextProvider";
 import { createDiary, updateDiary } from "../utils/fetchData";
 import {
@@ -49,6 +50,7 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
         title: "",
         created_date: getCurrentDateObj(),
         weather: "sunny",
+        mood: "",
         content: "",
     };
 
@@ -70,7 +72,7 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
     const handleDiary = (evt, data) => {
         setDiary((prevData) => ({
             ...prevData,
-            [data]: evt.target.value,
+            [data]: data === "mood" ? evt.unified : evt.target.value,
         }));
     };
 
@@ -132,17 +134,17 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                     required
                 />
                 <hr />
+                <div>
+                    <label for="date">date: </label>
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        value={`${diary.created_date.year}-${diary.created_date.month}-${diary.created_date.date}`}
+                        onChange={handleDate}
+                    />
+                </div>
                 <section>
-                    <div>
-                        <label for="date">date: </label>
-                        <input
-                            type="date"
-                            id="date"
-                            name="date"
-                            value={`${diary.created_date.year}-${diary.created_date.month}-${diary.created_date.date}`}
-                            onChange={handleDate}
-                        />
-                    </div>
                     <div>
                         <label for="weather">weather: </label>
                         <select
@@ -157,6 +159,13 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                                 </option>
                             ))}
                         </select>
+                    </div>
+                    <div style={{ display: "flex" }}>
+                        <label for="mood">mood: </label>
+                        <MoodSelector
+                            emoji={diary.mood}
+                            handleMood={handleDiary}
+                        />
                     </div>
                 </section>
                 <hr />

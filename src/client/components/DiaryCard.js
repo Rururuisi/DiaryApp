@@ -5,6 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { getWeather } from "../utils/diaryInfoTools";
+import { Emoji, EmojiStyle } from "emoji-picker-react";
 
 export default function DiaryCard({ diary }) {
     return (
@@ -32,7 +33,11 @@ export default function DiaryCard({ diary }) {
                         <small>{`${diary.created_date.month}/${diary.created_date.date}/${diary.created_date.year}`}</small>{" "}
                         <small>{getWeather(diary.weather)}</small>
                     </div>
-                    <div style={{ color: "grey" }}>
+                    <div
+                        style={{
+                            color: "grey",
+                        }}
+                    >
                         <small>@{diary.created_time}</small>
                     </div>
                 </Typography>
@@ -41,8 +46,10 @@ export default function DiaryCard({ diary }) {
                     variant="h5"
                     component="div"
                     fontSize="18px"
+                    sx={{ display: "flex", justifyContent: "space-between" }}
                 >
-                    {diary.title}
+                    <div>{diary.title}</div>
+                    <Emoji unified={diary.mood} />
                 </Typography>
 
                 <Typography variant="body2" color="text.secondary">

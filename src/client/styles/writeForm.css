@@ -22,7 +22,7 @@
 }
 
 .WriteForm label {
-  width: 10%;
+  line-height: 36px;
   font-size: 18px;
 }
 
@@ -37,14 +37,14 @@
 }
 
 .WriteForm hr {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   height: 1px;
   background-color: #dadada;
   border: none;
 }
 
 .WriteForm div {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 #weather {
