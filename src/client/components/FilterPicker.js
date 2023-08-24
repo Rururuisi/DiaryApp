@@ -52,9 +52,11 @@ export default function SelectSmall({ handleFilter }) {
                     {Array.from(
                         new Array(endYear - startYear + 1),
                         (_, i) => i + startYear
-                    ).map((year) => (
-                        <MenuItem value={year}>{year}</MenuItem>
-                    ))}
+                    )
+                        .reverse()
+                        .map((year) => (
+                            <MenuItem value={year}>{year}</MenuItem>
+                        ))}
                 </Select>
             </FormControl>
             <FormControl sx={formStyle} size="small">

@@ -171,7 +171,7 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                 <hr />
                 <StyledTextarea
                     aria-label="content"
-                    minRows={12}
+                    minRows={10}
                     value={diary.content}
                     onChange={(evt) => handleDiary(evt, "content")}
                     placeholder="Type your content here..."
