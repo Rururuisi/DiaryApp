@@ -4,6 +4,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
+import SettingPopupPage from "./SettingPopupPage";
 
 const labelStyle = {
     padding: "3px 16px",
@@ -30,7 +31,13 @@ function SettingList({ label, options }) {
                 {options.map((opt, idx) => (
                     <>
                         <ListItem key={idx} button>
-                            <ListItemText primary={opt} />
+                            <SettingPopupPage
+                                topLabel={opt.toggleLabel}
+                                pageContent={opt.content}
+                                toggleComponent={
+                                    <ListItemText primary={opt.toggleLabel} />
+                                }
+                            />
                         </ListItem>
                         <Divider />
                     </>

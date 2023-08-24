@@ -5,10 +5,21 @@ import Profile from "../components/Profile";
 import SettingList from "../components/SettingList";
 import DeleteAlert from "../components/DeleteAlert";
 import { deleteUser } from "../utils/fetchData";
+import UpdateJournal from "../components/SettingList/UpdateJournal";
 
-const settingTwo = ["Account", "Photos Library"];
-const settingOne = ["Theme", "Dark Mode"];
-const settingThree = ["Unsaved Draft"];
+// const personal = ["Account", "Photos Library"];
+const personal = [
+    { toggleLabel: "Account", content: "" },
+    { toggleLabel: "Library", content: "" },
+];
+const appearance = [
+    { toggleLabel: "Theme", content: "" },
+    { toggleLabel: "Dark Mode", content: "" },
+];
+const others = [
+    { toggleLabel: "Unsaved Draft", content: "" },
+    { toggleLabel: "Update Journal (更新日志)", content: <UpdateJournal /> },
+];
 
 export default function Account() {
     const { user, logout } = useContext(UserContext);
@@ -25,13 +36,14 @@ export default function Account() {
         deleteUser(user._id).catch((err) => alert(err));
         logout();
     };
+
     return (
         <>
             <div className="Account" style={{ minHeight: "100vh" }}>
                 <Profile />
-                <SettingList label="PERSONAL" options={settingTwo} />
-                <SettingList label="APPEARANCE" options={settingOne} />
-                <SettingList label="DRAFT" options={settingThree} />
+                <SettingList label="PERSONAL" options={personal} />
+                <SettingList label="APPEARANCE" options={appearance} />
+                <SettingList label="OTHERS" options={others} />
                 <div className="AccountBtn">
                     <button onClick={() => logout()} className="logoutBtn">
                         Logout

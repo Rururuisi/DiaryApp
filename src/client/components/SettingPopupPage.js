@@ -4,50 +4,16 @@ import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Drawer from "@mui/material/Drawer";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ShowDiary from "./ShowDiary";
-import WriteForm from "./WriteForm";
 
 const BackIcon = styled(ArrowBackIosIcon)({
     cursor: "pointer",
 });
 
-export default function PopupPage({ diary, pageContent, toggleComponent }) {
+export default function PopupPage({ topLabel, pageContent, toggleComponent }) {
     const [open, setOpen] = useState(false);
-    const [pageForm, setPageForm] = useState({
-        currentDiary: diary,
-        form: pageContent,
-    });
 
     const toggleDrawer = (newOpen) => {
-        setPageForm({ currentDiary: diary, form: pageContent });
         setOpen(newOpen);
-    };
-
-    const changeToReadForm = (currentDiary) => {
-        setPageForm({ form: "ShowDiary", currentDiary });
-    };
-
-    const changeToWriteForm = (currentDiary) => {
-        setPageForm({ form: "WriteForm", currentDiary });
-    };
-
-    const getShowForm = () => {
-        return (
-            <ShowDiary
-                diary={pageForm.currentDiary}
-                onEditForm={changeToWriteForm}
-                onClosePopup={toggleDrawer}
-            />
-        );
-    };
-
-    const getWriteForm = () => {
-        return (
-            <WriteForm
-                diaryCurrentState={pageForm.currentDiary}
-                onReadForm={changeToReadForm}
-            />
-        );
     };
 
     const page = () => (
@@ -72,16 +38,19 @@ export default function PopupPage({ diary, pageContent, toggleComponent }) {
                     sx={{ color: (theme) => theme.palette.primary.dark }}
                     onClick={() => toggleDrawer(false)}
                 />
+                <div style={{ marginLeft: "20px", fontSize: "22px" }}>
+                    {topLabel}
+                </div>
             </Toolbar>
-            <Box sx={{ padding: "0 15px" }}>
-                {pageForm.form === "WriteForm" ? getWriteForm() : getShowForm()}
-            </Box>
+            <Box sx={{ padding: "0 15px" }}>{pageContent}</Box>
         </Box>
     );
 
     return (
         <React.Fragment>
-            <div onClick={() => toggleDrawer(true)}>{toggleComponent}</div>
+            <div style={{ width: "100%" }} onClick={() => toggleDrawer(true)}>
+                {toggleComponent}
+            </div>
             <Drawer
                 anchor={"top"}
                 open={open}
