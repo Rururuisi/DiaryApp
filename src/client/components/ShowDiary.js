@@ -98,6 +98,7 @@ export default function ShowDiary({ diary, onEditForm, onClosePopup }) {
                         borderRadius: 50,
                         width: "40px",
                         minWidth: 0,
+                        zIndex: 1,
                     }}
                     onClick={() => setIsOpen(true)}
                 >
@@ -117,6 +118,7 @@ export default function ShowDiary({ diary, onEditForm, onClosePopup }) {
                         backgroundColor: (theme) => theme.palette.primary.dark,
                         borderRadius: 25,
                         minWidth: 0,
+                        zIndex: 1,
                     }}
                     onClick={() => onEditForm(diary)}
                 >
