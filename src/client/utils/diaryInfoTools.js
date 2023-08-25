@@ -12,8 +12,6 @@ const weathers = [
     { weather: "snowy", symbol: "❄️" },
 ];
 
-const moods = [{ mood: "happy", symbol: "😊" }];
-
 const getWeather = (weather) => {
     return weathers.find((w) => w.weather === weather).symbol;
 };
