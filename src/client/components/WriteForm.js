@@ -5,6 +5,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import { styled } from "@mui/system";
 import MoodSelector from "./MoodSelector";
+import ImageUploader from "./ImageUploader";
 import { UserContext } from "../utils/UserContextProvider";
 import { createDiary, updateDiary } from "../utils/fetchData";
 import {
@@ -177,6 +178,7 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                     placeholder="Type your content here..."
                 />
                 <hr />
+                <ImageUploader />
                 <Button
                     type="submit"
                     variant="contained"
