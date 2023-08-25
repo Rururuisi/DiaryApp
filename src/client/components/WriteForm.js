@@ -120,7 +120,7 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
 
     return (
         <div className="WriteFormContainer">
-            <div className="dateTopDisplay">
+            <div className="dateTopDisplay" style={{ zIndex: 1 }}>
                 {diary.created_date.weekday}{" "}
                 {`${diary.created_date.month}/${diary.created_date.date}/${diary.created_date.year}`}
             </div>
@@ -135,9 +135,10 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                     required
                 />
                 <hr />
-                <div>
+                <div style={{ display: "flex" }}>
                     <label for="date">date: </label>
                     <input
+                        style={{ flexGrow: 1 }}
                         type="date"
                         id="date"
                         name="date"
@@ -172,7 +173,7 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                 <hr />
                 <StyledTextarea
                     aria-label="content"
-                    minRows={10}
+                    minRows={9}
                     value={diary.content}
                     onChange={(evt) => handleDiary(evt, "content")}
                     placeholder="Type your content here..."

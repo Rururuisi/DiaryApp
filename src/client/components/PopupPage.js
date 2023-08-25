@@ -66,6 +66,7 @@ export default function PopupPage({ diary, pageContent, toggleComponent }) {
                     top: 0,
                     width: "100%",
                     backgroundColor: "#fff",
+                    zIndex: 1,
                 }}
             >
                 <BackIcon
