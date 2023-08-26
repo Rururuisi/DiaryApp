@@ -35,7 +35,10 @@ export default function MoodSelector({ emoji, handleMood }) {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <EmojiPicker onEmojiClick={selectEmoji} />
+                    <EmojiPicker
+                        onEmojiClick={selectEmoji}
+                        autoFocusSearch={false}
+                    />
                 </Box>
             </Modal>
         </div>
