@@ -44,13 +44,13 @@ function ImageUploader() {
             {imagesForDisplay.length > 0 &&
                 imagesForDisplay.map((img, idx) => (
                     <div className="Image">
-                        <button
+                        <div
                             onClick={() => removeImage(img.filename)}
                             className="removeBtn"
                             type="button"
                         >
-                            &times;
-                        </button>
+                            <span>&times;</span>
+                        </div>
                         <ImageToggleFullScreen
                             url={img.url}
                             filename={img.filename}
@@ -66,9 +66,9 @@ function ImageUploader() {
                     style={{ display: "none" }}
                     onChange={handleImages}
                 />
-                <button id="addImageBtn" onClick={handleAdd}>
-                    +
-                </button>
+                <div id="addImageBtn" onClick={handleAdd}>
+                    <span>+</span>
+                </div>
             </div>
         </div>
     );

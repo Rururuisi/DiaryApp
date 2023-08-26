@@ -18,13 +18,16 @@
     right: 0;
     width: 25px;
     height: 25px;
-    border: none;
-    font-size: 18px;
-    color: #fff;
+    text-align: center;
     background-color: #aaa;
-    border-radius: 15px;
+    border-radius: 50%;
     cursor: pointer;
     translate: 25% -25%;
+}
+
+.Image .removeBtn span {
+    font-size: 20px;
+    color: #fff;
 }
 
 .Image .removeBtn:hover{
@@ -34,11 +37,16 @@
 #addImageBtn {
     width: 100%;
     height: 100%;
-    font-size: 40px;
-    color: #fff;
+    text-align: center;
     background-color: #ddd;
     border: none;
     cursor: pointer;
+}
+
+#addImageBtn span {
+    font-size: 40px;
+    line-height: 100px;
+    color: #fff;
 }
 
 #addImageBtn:hover {
