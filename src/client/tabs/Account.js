@@ -10,7 +10,7 @@ import UpdateJournal from "../components/SettingList/UpdateJournal";
 // const personal = ["Account", "Photos Library"];
 const personal = [
     { toggleLabel: "Account", content: "" },
-    { toggleLabel: "Library", content: "" },
+    { toggleLabel: "Photo Library", content: "" },
 ];
 const appearance = [
     { toggleLabel: "Theme", content: "" },

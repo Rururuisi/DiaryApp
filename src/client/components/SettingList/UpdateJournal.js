@@ -18,7 +18,7 @@ function UpdateJournal() {
                 含有过滤器和根据创建时间排序功能，可批量删除日记;
                 <br />
                 <small style={{ color: "red" }}>
-                    (目前已加入心情选择，图片添加功能正在开发中)
+                    (目前已加入心情选择，图片添加功能也已完成)
                 </small>
                 <br />
                 <br />
@@ -36,7 +36,7 @@ function UpdateJournal() {
             <p style={{ color: "blue" }}>
                 下一更新内容：
                 <br />
-                -- 加入日记添加图片功能;
+                -- 待通知;
             </p>
             <br />
             <br />
