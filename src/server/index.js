@@ -4,7 +4,6 @@ if (process.env.NODE_ENV !== "production") {
 
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
 
 const diaryRoutes = require("./routers/diary");
 const userRoutes = require("./routers/user");
@@ -25,7 +24,6 @@ mongoose
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 
 app.use((req, res, next) => {
     console.log(req.method, req.path);
