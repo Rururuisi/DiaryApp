@@ -1,6 +1,6 @@
 import "../styles/showDiary.css";
 import "../styles/imageList.css";
-import "../styles/imageFullScreen.css";
+import "../styles/imageUploader.css";
 import React, { useState, useContext } from "react";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
@@ -77,7 +77,7 @@ export default function ShowDiary({ diary, onEditForm, onClosePopup }) {
                     {diary.images &&
                         diary.images.length > 0 &&
                         diary.images.map((img, idx) => (
-                            <div className="thumbnail" key={idx}>
+                            <div key={idx} className="Image">
                                 <ImageToggleFullScreen
                                     url={img.url}
                                     filename={img.filename}

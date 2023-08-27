@@ -62,7 +62,11 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
     const [disabledSubmit, setDisabledSubmit] = useState(false);
     const [diary, setDiary] = useState(initialDiary);
     const [addImages, setAddImages] = useState([]);
-    const [removeImages, setRemoveImages] = useState([]);
+    const [removeImages, setRemoveImages] = useState(
+        diary.images
+            ? diary.images.map((img) => ({ image: img, isClicked: false }))
+            : []
+    );
     const { user, toggleFetch } = useContext(UserContext);
 
     const handleDate = (evt) => {
@@ -86,6 +90,16 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
         setAddImages(imgs);
     };
 
+    const handleClickRemove = (filename) => {
+        setRemoveImages((prevData) =>
+            prevData.map((img) => {
+                if (img.image.filename === filename) {
+                    return { ...img, isClicked: !img.isClicked };
+                } else return img;
+            })
+        );
+    };
+
     const formSubmit = async (evt) => {
         evt.preventDefault();
         setDisabledSubmit(true);
@@ -104,6 +118,17 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                 };
                 const formData = new FormData();
                 formData.append("diary", JSON.stringify(diaryData));
+                addImages.map((img) => {
+                    formData.append("addImages", img);
+                });
+                formData.append(
+                    "removeImages",
+                    JSON.stringify(
+                        removeImages
+                            .filter((img) => img.isClicked)
+                            .map((img) => img.image.filename)
+                    )
+                );
                 newDiaryData = await updateDiary(
                     user._id,
                     diaryData._id,
@@ -123,7 +148,7 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                 const formData = new FormData();
                 formData.append("diary", JSON.stringify(diaryData));
                 addImages.map((img) => {
-                    formData.append(`addImages`, img);
+                    formData.append("addImages", img);
                 });
                 newDiaryData = await createDiary(user._id, formData);
             }
@@ -198,18 +223,38 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                 />
                 <hr />
                 <div className="imageContainer" style={{ marginTop: "50px" }}>
-                    {diary.images &&
-                        diary.images.length > 0 &&
-                        diary.images.map((img, idx) => (
-                            <div className="thumbnail" key={idx}>
+                    {removeImages.length > 0 &&
+                        removeImages.map((img, idx) => (
+                            <div key={idx} className="Image">
+                                <div
+                                    className={
+                                        img.isClicked
+                                            ? "removeBtn clickRemoveBtn"
+                                            : "removeBtn notRemoveBtn"
+                                    }
+                                    type="button"
+                                    onClick={() =>
+                                        handleClickRemove(img.image.filename)
+                                    }
+                                >
+                                    {img.isClicked ? (
+                                        <span>
+                                            <b>+</b>
+                                        </span>
+                                    ) : (
+                                        <span>
+                                            <b>—</b>
+                                        </span>
+                                    )}
+                                </div>
                                 <ImageToggleFullScreen
-                                    url={img.url}
-                                    filename={img.filename}
+                                    url={img.image.url}
+                                    filename={img.image.filename}
                                 />
                             </div>
                         ))}
+                    <ImageUploader imagesSetter={handleImages} />
                 </div>
-                <ImageUploader imagesSetter={handleImages} />
                 <Button
                     type="submit"
                     variant="contained"

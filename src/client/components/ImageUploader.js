@@ -38,7 +38,7 @@ function ImageUploader({ imagesSetter }) {
     };
 
     return (
-        <div className="ImageUploader">
+        <>
             {imagesForDisplay.length > 0 &&
                 imagesForDisplay.map((img, idx) => (
                     <div key={idx} className="Image">
@@ -65,10 +65,10 @@ function ImageUploader({ imagesSetter }) {
                     onChange={handleImages}
                 />
                 <div id="addImageBtn" onClick={handleAdd}>
-                    <span>+</span>
+                    <div>+</div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
