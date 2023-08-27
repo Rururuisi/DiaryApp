@@ -1,0 +1,12 @@
+.imageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.imageContainer .thumbnail {
+    margin: 10px 10px 0 0;
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+}

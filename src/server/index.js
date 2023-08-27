@@ -4,8 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const session = require("express-session");
+const cors = require("cors");
 
 const diaryRoutes = require("./routers/diary");
 const userRoutes = require("./routers/user");
@@ -13,7 +12,6 @@ const userRoutes = require("./routers/user");
 const app = express();
 const PORT = process.env.PORT || 5000;
 const dbUrl = process.env.DB_URL;
-const secret = process.env.SECRET;
 
 // -----------------Mongoose-----------------------
 mongoose
@@ -25,14 +23,9 @@ mongoose
 
 //----------------------Express---------------------------
 
-const sessionOptions = {
-    secret,
-    resave: false,
-    saveUninitialized: false,
-};
-
-app.use(session(sessionOptions));
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use((req, res, next) => {
     console.log(req.method, req.path);

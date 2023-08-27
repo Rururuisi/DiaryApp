@@ -1,5 +1,5 @@
 import "../styles/dashboard.css";
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import GrassIcon from "@mui/icons-material/Grass";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
@@ -19,15 +19,6 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function Dashboard() {
     const { user } = useContext(UserContext);
     const diariesLen = user.diaries.length;
-
-    const [isOpen, setIsOpen] = useState(false);
-
-    const handleLogOpen = () => {
-        setIsOpen(true);
-    };
-    const handleLogClose = () => {
-        setIsOpen(false);
-    };
 
     return (
         <div className="Dashboard">

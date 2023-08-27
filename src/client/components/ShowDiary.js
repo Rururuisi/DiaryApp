@@ -1,4 +1,6 @@
 import "../styles/showDiary.css";
+import "../styles/imageList.css";
+import "../styles/imageFullScreen.css";
 import React, { useState, useContext } from "react";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
@@ -9,6 +11,7 @@ import DeleteAlert from "./DeleteAlert";
 import { UserContext } from "../utils/UserContextProvider";
 import { deleteDiary } from "../utils/fetchData";
 import { Emoji, EmojiStyle } from "emoji-picker-react";
+import ImageToggleFullScreen from "./ImageToggleFullScreen";
 
 export default function ShowDiary({ diary, onEditForm, onClosePopup }) {
     const paragraphs = diary.content.split("\n");
@@ -70,6 +73,18 @@ export default function ShowDiary({ diary, onEditForm, onClosePopup }) {
                 {paragraphs.map((paragraph, idx) => (
                     <p key={idx}>{paragraph}</p>
                 ))}
+                <div className="imageContainer" style={{ marginTop: "50px" }}>
+                    {diary.images &&
+                        diary.images.length > 0 &&
+                        diary.images.map((img, idx) => (
+                            <div className="thumbnail" key={idx}>
+                                <ImageToggleFullScreen
+                                    url={img.url}
+                                    filename={img.filename}
+                                />
+                            </div>
+                        ))}
+                </div>
                 {diary.last_modified_time ? (
                     <Typography
                         component="div"

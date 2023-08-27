@@ -2,13 +2,13 @@ import "../styles/imageUploader.css";
 import React, { useState, useEffect, useRef } from "react";
 import ImageToggleFullScreen from "./ImageToggleFullScreen";
 
-function ImageUploader() {
+function ImageUploader({ imagesSetter }) {
     const ref = useRef(null);
-    const [images, setImages] = useState({ files: [] });
+    const [images, setImages] = useState([]);
     const [imagesForDisplay, setImagesForDisplay] = useState([]);
 
     useEffect(() => {
-        console.log(images, imagesForDisplay);
+        imagesSetter(images);
     }, [images]);
 
     const handleAdd = (evt) => {
@@ -18,9 +18,7 @@ function ImageUploader() {
     };
 
     const handleImages = (evt) => {
-        setImages((prevData) => ({
-            files: [...prevData.files, ...evt.target.files],
-        }));
+        setImages((prevData) => [...prevData, ...evt.target.files]);
         setImagesForDisplay((prevData) => {
             const urls = [...evt.target.files].map((file) => ({
                 url: URL.createObjectURL(file),
@@ -31,9 +29,9 @@ function ImageUploader() {
     };
 
     const removeImage = (filename) => {
-        setImages((prevData) => ({
-            files: prevData.files.filter((file) => file.name !== filename),
-        }));
+        setImages((prevData) =>
+            prevData.filter((file) => file.name !== filename)
+        );
         setImagesForDisplay((prevData) =>
             prevData.filter((img) => img.filename !== filename)
         );
@@ -43,7 +41,7 @@ function ImageUploader() {
         <div className="ImageUploader">
             {imagesForDisplay.length > 0 &&
                 imagesForDisplay.map((img, idx) => (
-                    <div className="Image">
+                    <div key={idx} className="Image">
                         <div
                             onClick={() => removeImage(img.filename)}
                             className="removeBtn"

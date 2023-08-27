@@ -16,12 +16,12 @@ function ImageToggleFullScreen({ url, filename }) {
         <>
             <img
                 onClick={openImage}
-                className="imgThumbnail"
+                id="imgThumbnail"
                 src={url}
                 title={filename}
             />
             {isOpen && (
-                <div onClick={closeImage} className="imageBG">
+                <div onClick={closeImage} id="imageBG">
                     <img src={url} title={filename} />
                     <div onClick={closeImage} className="back">
                         <span>&times;</span>

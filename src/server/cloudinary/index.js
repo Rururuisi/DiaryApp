@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary,
     params: {
-        folder: "DiaryAppAssets",
+        folder: "DiaryApp",
         allowedFormats: ["jpeg", "jpg", "png"],
     },
 });

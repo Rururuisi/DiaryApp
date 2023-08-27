@@ -1,4 +1,5 @@
 import "../styles/writeForm.css";
+import "../styles/imageUploader.css";
 import React, { useState, useContext } from "react";
 import Button from "@mui/material/Button";
 import CheckIcon from "@mui/icons-material/Check";
@@ -6,6 +7,7 @@ import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import { styled } from "@mui/system";
 import MoodSelector from "./MoodSelector";
 import ImageUploader from "./ImageUploader";
+import ImageToggleFullScreen from "./ImageToggleFullScreen";
 import { UserContext } from "../utils/UserContextProvider";
 import { createDiary, updateDiary } from "../utils/fetchData";
 import {
@@ -57,7 +59,10 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
 
     let initialDiary = diaryCurrentState || emptyDiary;
 
+    const [disabledSubmit, setDisabledSubmit] = useState(false);
     const [diary, setDiary] = useState(initialDiary);
+    const [addImages, setAddImages] = useState([]);
+    const [removeImages, setRemoveImages] = useState([]);
     const { user, toggleFetch } = useContext(UserContext);
 
     const handleDate = (evt) => {
@@ -77,8 +82,13 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
         }));
     };
 
+    const handleImages = (imgs) => {
+        setAddImages(imgs);
+    };
+
     const formSubmit = async (evt) => {
         evt.preventDefault();
+        setDisabledSubmit(true);
         try {
             let newDiaryData;
             if (diary._id) {
@@ -92,10 +102,12 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                         minute: "2-digit",
                     }),
                 };
+                const formData = new FormData();
+                formData.append("diary", JSON.stringify(diaryData));
                 newDiaryData = await updateDiary(
                     user._id,
                     diaryData._id,
-                    diaryData
+                    formData
                 );
             } else {
                 const diaryData = {
@@ -108,12 +120,18 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                         minute: "2-digit",
                     }),
                 };
-                newDiaryData = await createDiary(user._id, diaryData);
+                const formData = new FormData();
+                formData.append("diary", JSON.stringify(diaryData));
+                addImages.map((img) => {
+                    formData.append(`addImages`, img);
+                });
+                newDiaryData = await createDiary(user._id, formData);
             }
             toggleFetch();
             setDiary(newDiaryData);
             onReadForm(newDiaryData);
         } catch (err) {
+            setDisabledSubmit(false);
             alert(err.message);
         }
     };
@@ -179,7 +197,19 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                     placeholder="Type your content here..."
                 />
                 <hr />
-                <ImageUploader />
+                <div className="imageContainer" style={{ marginTop: "50px" }}>
+                    {diary.images &&
+                        diary.images.length > 0 &&
+                        diary.images.map((img, idx) => (
+                            <div className="thumbnail" key={idx}>
+                                <ImageToggleFullScreen
+                                    url={img.url}
+                                    filename={img.filename}
+                                />
+                            </div>
+                        ))}
+                </div>
+                <ImageUploader imagesSetter={handleImages} />
                 <Button
                     type="submit"
                     variant="contained"
@@ -196,6 +226,7 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                         minWidth: 0,
                         zIndex: 1,
                     }}
+                    disabled={disabledSubmit}
                 >
                     <CheckIcon />
                 </Button>

@@ -1,11 +1,11 @@
-.imgThumbnail {
+#imgThumbnail {
     width: 100%;
     height: 100%;
     object-fit: cover;
     cursor: pointer;
 }
 
-.imageBG {
+#imageBG {
     position: fixed;
     top: 0;
     left: 0;
@@ -15,7 +15,7 @@
     z-index: 2;
 }
 
-.imageBG .back {
+#imageBG .back {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -27,17 +27,17 @@
     cursor: pointer;
 }
 
-.imageBG .back span {
+#imageBG .back span {
     font-size: 36px;
     line-height: 38px;
     color: #fff;
 }
 
-.imageBG .back:hover {
+#imageBG .back:hover {
     background-color: #888;
 }
 
-.imageBG img {
+#imageBG img {
     width: 100%;
     height: 100%;
     object-fit: contain;

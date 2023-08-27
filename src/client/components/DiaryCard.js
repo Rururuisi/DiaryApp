@@ -1,7 +1,7 @@
+import "../styles/imageList.css";
 import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { getWeather } from "../utils/diaryInfoTools";
@@ -57,13 +57,19 @@ export default function DiaryCard({ diary }) {
                         ? `${diary.content.slice(0, 150)}...`
                         : diary.content}
                 </Typography>
+                <div className="imageContainer">
+                    {diary.images &&
+                        diary.images.length > 0 &&
+                        diary.images.map((img, idx) => (
+                            <img
+                                className="thumbnail"
+                                key={idx}
+                                src={img.url}
+                                title={img.filename}
+                            />
+                        ))}
+                </div>
             </CardContent>
-            {/* <CardMedia
-              component="img"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
-              alt="green iguana"
-            /> */}
         </Card>
     );
 }

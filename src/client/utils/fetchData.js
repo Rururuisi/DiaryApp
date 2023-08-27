@@ -34,22 +34,21 @@ const deleteUser = async (userId) => {
     await fetch(deleteUserEndpoint(userId), { method: "DELETE" });
 };
 
-const fetchDiary = async (endpoint, diaryData, method) => {
+const fetchDiary = async (endpoint, bodyData, method) => {
     const response = await fetch(endpoint, {
         method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(diaryData),
+        body: bodyData,
     });
     const newDiaryData = await response.json();
     return newDiaryData;
 };
 
-const createDiary = (userId, diaryData) => {
-    return fetchDiary(newDiaryEndpoint(userId), diaryData, "POST");
+const createDiary = (userId, bodyData) => {
+    return fetchDiary(newDiaryEndpoint(userId), bodyData, "POST");
 };
 
-const updateDiary = (userId, diaryId, diaryData) => {
-    return fetchDiary(diaryEndpoint(userId, diaryId), diaryData, "PUT");
+const updateDiary = (userId, diaryId, bodyData) => {
+    return fetchDiary(diaryEndpoint(userId, diaryId), bodyData, "PUT");
 };
 
 const deleteDiary = async (userId, diaryId) => {
