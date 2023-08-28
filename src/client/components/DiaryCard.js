@@ -60,14 +60,34 @@ export default function DiaryCard({ diary }) {
                 <div className="imageContainer">
                     {diary.images &&
                         diary.images.length > 0 &&
-                        diary.images.map((img, idx) => (
-                            <img
-                                className="thumbnail"
-                                key={idx}
-                                src={img.url}
-                                title={img.filename}
-                            />
-                        ))}
+                        diary.images.map((img, idx) =>
+                            idx < 5 ? (
+                                <img
+                                    className="thumbnail"
+                                    key={idx}
+                                    src={img.url}
+                                    title={img.filename}
+                                />
+                            ) : (
+                                idx === 6 && (
+                                    <div
+                                        className="thumbnail"
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                            backgroundColor:
+                                                "rgba(0, 0, 0, 0.7)",
+                                            color: "#fff",
+                                        }}
+                                    >
+                                        <div>
+                                            <b>· · ·</b>
+                                        </div>
+                                    </div>
+                                )
+                            )
+                        )}
                 </div>
             </CardContent>
         </Card>

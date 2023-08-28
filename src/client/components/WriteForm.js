@@ -20,11 +20,11 @@ const StyledTextarea = styled(TextareaAutosize)(
     ({ theme }) => `
     width: 100%;
     font-family: IBM Plex Sans, sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     font-family: monospace;
     line-height: 1.5;
-    padding: 0 0 20px 0;
+    padding: 0px 10px;
     border-radius: 0;
     color: #535353;
     background: #fff;
@@ -68,6 +68,10 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
             : []
     );
     const { user, toggleFetch } = useContext(UserContext);
+    const totalImages =
+        (diary.images ? diary.images.length : 0) -
+        removeImages.filter((img) => img.isClicked).length +
+        addImages.length;
 
     const handleDate = (evt) => {
         const [year, month, date] = evt.target.value.split("-");
@@ -168,15 +172,16 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                 {`${diary.created_date.month}/${diary.created_date.date}/${diary.created_date.year}`}
             </div>
             <form className="WriteForm" onSubmit={formSubmit}>
-                <label for="title">title: </label>
-                <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    value={diary.title}
-                    onChange={(evt) => handleDiary(evt, "title")}
-                    required
-                />
+                <div style={{ display: "flex", alignItems: "baseline" }}>
+                    <label for="title">title: </label>
+                    <StyledTextarea
+                        aria-label="title"
+                        minRows={1}
+                        value={diary.title}
+                        onChange={(evt) => handleDiary(evt, "title")}
+                        required
+                    />
+                </div>
                 <hr />
                 <div style={{ display: "flex" }}>
                     <label for="date">date: </label>
@@ -214,14 +219,16 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                     </div>
                 </section>
                 <hr />
-                <StyledTextarea
-                    aria-label="content"
-                    minRows={9}
-                    value={diary.content}
-                    onChange={(evt) => handleDiary(evt, "content")}
-                    placeholder="Type your content here..."
-                    required
-                />
+                <div style={{ padding: "10px 0" }}>
+                    <StyledTextarea
+                        aria-label="content"
+                        minRows={9}
+                        value={diary.content}
+                        onChange={(evt) => handleDiary(evt, "content")}
+                        placeholder="Type your content here..."
+                        required
+                    />
+                </div>
                 <hr />
                 <div className="imageContainer" style={{ marginTop: "50px" }}>
                     {removeImages.length > 0 &&
@@ -254,7 +261,10 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                                 />
                             </div>
                         ))}
-                    <ImageUploader imagesSetter={handleImages} />
+                    <ImageUploader
+                        totalImages={totalImages}
+                        imagesSetter={handleImages}
+                    />
                 </div>
                 <Button
                     type="submit"

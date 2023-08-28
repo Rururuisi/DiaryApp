@@ -2,7 +2,7 @@ import "../styles/imageUploader.css";
 import React, { useState, useEffect, useRef } from "react";
 import ImageToggleFullScreen from "./ImageToggleFullScreen";
 
-function ImageUploader({ imagesSetter }) {
+function ImageUploader({ totalImages, imagesSetter }) {
     const ref = useRef(null);
     const [images, setImages] = useState([]);
     const [imagesForDisplay, setImagesForDisplay] = useState([]);
@@ -55,19 +55,21 @@ function ImageUploader({ imagesSetter }) {
                         />
                     </div>
                 ))}
-            <div className="Image">
-                <input
-                    ref={ref}
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    style={{ display: "none" }}
-                    onChange={handleImages}
-                />
-                <div id="addImageBtn" onClick={handleAdd}>
-                    <div>+</div>
+            {totalImages < 9 && (
+                <div className="Image">
+                    <input
+                        ref={ref}
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        style={{ display: "none" }}
+                        onChange={handleImages}
+                    />
+                    <div id="addImageBtn" onClick={handleAdd}>
+                        <div>+</div>
+                    </div>
                 </div>
-            </div>
+            )}
         </>
     );
 }

@@ -21,6 +21,10 @@
   box-sizing: border-box;
 }
 
+.WriteForm input[type=text] {
+  font-family: Times;
+}
+
 .WriteForm label {
   line-height: 36px;
   font-size: 18px;

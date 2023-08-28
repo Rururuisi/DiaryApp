@@ -17,7 +17,7 @@ const appearance = [
 ];
 const others = [
     { toggleLabel: "Unsaved Draft", content: "" },
-    { toggleLabel: "Update Journal (更新日志)", content: <UpdateJournal /> },
+    { toggleLabel: "Update Journal", content: <UpdateJournal /> },
 ];
 
 export default function Account() {
