@@ -44,7 +44,7 @@ const getListItem = ({ label, value, editable }) => {
                 />
                 {editable && (
                     <KeyboardArrowRightIcon
-                        style={{ translate: "0 5px", color: "#aaa" }}
+                        style={{ translate: "0 7px", color: "#aaa" }}
                     />
                 )}
             </div>
