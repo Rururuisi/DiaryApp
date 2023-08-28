@@ -220,6 +220,7 @@ export default function WriteForm({ diaryCurrentState, onReadForm }) {
                     value={diary.content}
                     onChange={(evt) => handleDiary(evt, "content")}
                     placeholder="Type your content here..."
+                    required
                 />
                 <hr />
                 <div className="imageContainer" style={{ marginTop: "50px" }}>

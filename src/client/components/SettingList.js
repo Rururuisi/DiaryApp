@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { UserContext } from "../utils/UserContextProvider";
+import React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -27,7 +26,7 @@ function SettingList({ label, options }) {
     return (
         <div>
             <div style={labelStyle}>{label}</div>
-            <List sx={listStyle} component="nav" aria-label="mailbox folders">
+            <List sx={listStyle} component="nav">
                 {options.map((opt, idx) => (
                     <>
                         <ListItem key={idx} button>

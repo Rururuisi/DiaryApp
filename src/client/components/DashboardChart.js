@@ -74,13 +74,13 @@ export default function DashboardChart() {
                         {
                             scaleType: "band",
                             dataKey: "month",
+                            label: "(Month)",
                         },
                     ]}
                     yAxis={[{ tickMinStep: 1 }]}
                     series={[
                         {
                             dataKey: "data",
-                            label: "Number of Diaries in Month",
                         },
                     ]}
                     height={350}

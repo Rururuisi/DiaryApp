@@ -2,7 +2,15 @@ import React from "react";
 
 function UpdateJournal() {
     return (
-        <div style={{ padding: "10px 20px 80px 20px", color: "#555" }}>
+        <div
+            style={{
+                margin: "10px 20px 80px 20px",
+                padding: "20px",
+                color: "#555",
+                backgroundColor: "#fff",
+                borderRadius: "20px",
+            }}
+        >
             <p>
                 <b>目前进度：</b>
                 <br />

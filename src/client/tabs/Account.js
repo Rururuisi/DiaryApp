@@ -1,16 +1,15 @@
 import "../styles/account.css";
-import React, { useContext, useState } from "react";
-import { UserContext } from "../utils/UserContextProvider";
+import React from "react";
 import Profile from "../components/Profile";
 import SettingList from "../components/SettingList";
-import DeleteAlert from "../components/DeleteAlert";
-import { deleteUser } from "../utils/fetchData";
+import AccountPage from "../components/SettingList/AccountPage";
+import PhotoLibrary from "../components/SettingList/PhotoLibrary";
 import UpdateJournal from "../components/SettingList/UpdateJournal";
 
 // const personal = ["Account", "Photos Library"];
 const personal = [
-    { toggleLabel: "Account", content: "" },
-    { toggleLabel: "Photo Library", content: "" },
+    { toggleLabel: "Account", content: <AccountPage /> },
+    { toggleLabel: "Photo Library", content: <PhotoLibrary /> },
 ];
 const appearance = [
     { toggleLabel: "Theme", content: "" },
@@ -22,42 +21,12 @@ const others = [
 ];
 
 export default function Account() {
-    const { user, logout } = useContext(UserContext);
-    const [alert, setAlert] = useState(false);
-
-    const openAlert = () => {
-        setAlert(true);
-    };
-    const closeAlert = () => {
-        setAlert(false);
-    };
-
-    const handleDelete = () => {
-        deleteUser(user._id).catch((err) => alert(err));
-        logout();
-    };
-
     return (
-        <>
-            <div className="Account" style={{ minHeight: "100vh" }}>
-                <Profile />
-                <SettingList label="PERSONAL" options={personal} />
-                <SettingList label="APPEARANCE" options={appearance} />
-                <SettingList label="OTHERS" options={others} />
-                <div className="AccountBtn">
-                    <button onClick={() => logout()} className="logoutBtn">
-                        Logout
-                    </button>
-                    <button onClick={openAlert}>Delete Account</button>
-                </div>
-            </div>
-            {alert && (
-                <DeleteAlert
-                    onClose={closeAlert}
-                    onDelete={handleDelete}
-                    deleteObjName={"the account"}
-                />
-            )}
-        </>
+        <div className="Account" style={{ minHeight: "100vh" }}>
+            <Profile />
+            <SettingList label="PERSONAL" options={personal} />
+            <SettingList label="APPEARANCE" options={appearance} />
+            <SettingList label="OTHERS" options={others} />
+        </div>
     );
 }
