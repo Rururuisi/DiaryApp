@@ -22,7 +22,7 @@ export default function PopupPage({ topLabel, pageContent, toggleComponent }) {
                 width: "100%",
                 minHeight: "100vh",
                 paddingTop: "80px",
-                backgroundColor: "#f7f6f2",
+                backgroundColor: "#ededed",
             }}
             role="presentation"
         >
@@ -44,7 +44,9 @@ export default function PopupPage({ topLabel, pageContent, toggleComponent }) {
                     {topLabel}
                 </div>
             </Toolbar>
-            <Box sx={{ padding: 0 }}>{pageContent}</Box>
+            <Box sx={{ padding: "0 0 10px 0", backgroundColor: "#ededed" }}>
+                {pageContent}
+            </Box>
         </Box>
     );
 

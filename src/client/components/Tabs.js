@@ -79,7 +79,7 @@ function Tabs() {
             <TabPanel value="calendar">
                 <Calendar />
             </TabPanel>
-            <TabPanel sx={{ padding: 0 }} value="account">
+            <TabPanel sx={{ padding: "0 0 20px 0" }} value="account">
                 <Account />
             </TabPanel>
         </TabContext>
