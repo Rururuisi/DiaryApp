@@ -52,7 +52,6 @@ const DiarySchema = new mongoose.Schema({
     weather: {
         type: String,
         enum: weather,
-        required: true,
     },
     mood: String,
     content: {
