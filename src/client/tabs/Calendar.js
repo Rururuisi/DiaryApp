@@ -61,13 +61,12 @@ function ServerDay(props) {
         <Badge
             key={props.day.toString()}
             overlap="circular"
-            badgeContent={isSelected ? "🌺" : undefined}
-        >
+            badgeContent={isSelected ? "🌺" : undefined}>
             <PickersDay
                 {...other}
                 outsideCurrentMonth={outsideCurrentMonth}
                 day={day}
-            />
+            />{" "}
         </Badge>
     );
 }
@@ -154,8 +153,8 @@ export default function DateCalendarServerRequest() {
             <header>
                 <h1>
                     Calendar <CalendarMonthIcon />
-                </h1>
-            </header>
+                </h1>{" "}
+            </header>{" "}
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateCalendar
                     sx={dateCalendarStyles}
@@ -177,12 +176,16 @@ export default function DateCalendarServerRequest() {
                     showDaysOutsideCurrentMonth
                     fixedWeekNumber={6}
                     onClick={handleClickOnDay}
-                    style={{ width: "100%", height: "450px" }}
-                />
-            </LocalizationProvider>
+                    style={{
+                        width: "100%",
+                        height: "360px",
+                        maxHeight: "unset",
+                    }}
+                />{" "}
+            </LocalizationProvider>{" "}
             <br />
             <hr />
-            <br />
+            <br />{" "}
             {diaries.length ? (
                 diaries.map((diary) => (
                     <PopupPage
@@ -193,8 +196,8 @@ export default function DateCalendarServerRequest() {
                     />
                 ))
             ) : (
-                <p style={{ color: "grey" }}>NO DIARY</p>
-            )}
+                <p style={{ color: "grey" }}> NO DIARY </p>
+            )}{" "}
         </div>
     );
 }
