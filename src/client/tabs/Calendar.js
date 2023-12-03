@@ -159,9 +159,7 @@ export default function DateCalendarServerRequest() {
                 <DateCalendar
                     sx={dateCalendarStyles}
                     views={["year", "month", "day"]}
-                    value={dayjs(
-                        `${selectedDate.month}/${selectedDate.date}/${selectedDate.year}`
-                    )}
+                    defaultValue={initialValue}
                     loading={isLoading}
                     onMonthChange={handleMonthChange}
                     renderLoading={() => <DayCalendarSkeleton />}
