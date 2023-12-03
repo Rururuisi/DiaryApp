@@ -34,10 +34,12 @@ const dateCalendarStyles = {
         translate: "0 10px",
     },
     "& .MuiYearCalendar-root": {
+        margin: "0 25px",
         transform: "scale(0.8)",
         translate: "0 -10px",
     },
     "& .MuiMonthCalendar-root": {
+        margin: "0 25px",
         transform: "scale(0.8)",
     },
     "& .MuiPickersDay-dayOutsideMonth": {
