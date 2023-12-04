@@ -11,7 +11,6 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { UserContext } from "../utils/UserContextProvider";
 import PopupPage from "../components/PopupPage";
 import DiaryCard from "../components/DiaryCard";
-import { getWeather } from "../utils/diaryInfoTools";
 
 const dateCalendarStyles = {
     border: "2px solid",
