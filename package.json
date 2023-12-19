@@ -8,8 +8,6 @@
         "server": "nodemon src/server/index.js",
         "start": "npm run server & npm run client"
     },
-    "author": "Nikolai (Nolesh) Oleshko",
-    "license": "ISC",
     "dependencies": {
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
