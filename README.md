@@ -11,8 +11,9 @@ I will continuously develop the UI for PC-appropriate in the future.
 
 **Codesandbox Deployment Access Link:** https://3psmqs-3000.csb.app/
 
+</br></br>
 
-Steps for Running the Project: 
+### Steps for Running the Project: 
 1. run `yarn install` to install the dependency
 2. run `npm run start` to concurrently run the server and client
 
