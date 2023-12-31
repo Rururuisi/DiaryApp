@@ -11,7 +11,7 @@ const lightTheme = {
 	},
 	secondary: {
 		// yellow, very-light-yellow, adn dark-brown
-		main: "#f6c800",
+		main: "#ff8300",
 		light: "#fffdf0",
 		dark: "#333230",
 	},
@@ -62,6 +62,8 @@ const ThemeContextProvider = ({ children }) => {
 	useEffect(() => {
 		mode && setTheme(createTheme(getDesignTokens(mode)));
 	}, [mode]);
+
+	console.log(theme);
 
 	const value = { theme, setTheme, mode, setMode };
 	return (

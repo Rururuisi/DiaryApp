@@ -69,16 +69,40 @@ function Tabs() {
 					value='account'
 				/>
 			</TabList>
-			<TabPanel value='timeline'>
+			<TabPanel
+				sx={{
+					backgroundColor: (theme) => theme.palette.ternary.main,
+					padding: "24px 24px 100px 24px",
+					minHeight: "100vh",
+				}}
+				value='timeline'>
 				<Dashboard />
 			</TabPanel>
-			<TabPanel sx={{ padding: "24px 0" }} value='diary'>
+			<TabPanel
+				sx={{
+					backgroundColor: (theme) => theme.palette.ternary.main,
+					padding: "24px 0 100px 0",
+					minHeight: "100vh",
+				}}
+				value='diary'>
 				<Diary />
 			</TabPanel>
-			<TabPanel value='calendar'>
+			<TabPanel
+				sx={{
+					backgroundColor: (theme) => theme.palette.ternary.main,
+					padding: "24px 24px 100px 24px",
+					minHeight: "100vh",
+				}}
+				value='calendar'>
 				<Calendar />
 			</TabPanel>
-			<TabPanel sx={{ padding: "0 0 20px 0" }} value='account'>
+			<TabPanel
+				sx={{
+					backgroundColor: (theme) => theme.palette.ternary.main,
+					padding: "0 0 100px 0",
+					minHeight: "100vh",
+				}}
+				value='account'>
 				<Account />
 			</TabPanel>
 		</TabContext>
