@@ -1,12 +1,15 @@
 import "./styles/app.css";
 import React from "react";
-import { UserContextProvider } from "./utils/UserContextProvider";
+import { ThemeContextProvider } from "./contexts/Theme.context";
+import { UserContextProvider } from "./contexts/UserContextProvider";
 import Entrance from "./Entrance";
 
 export default function App() {
-    return (
-        <UserContextProvider>
-            <Entrance />
-        </UserContextProvider>
-    );
+	return (
+		<ThemeContextProvider>
+			<UserContextProvider>
+				<Entrance />
+			</UserContextProvider>
+		</ThemeContextProvider>
+	);
 }

@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { UserContext } from "../../utils/UserContextProvider";
+import { UserContext } from "../../contexts/UserContextProvider";
 
 function PhotoLibrary() {
-    const { user } = useContext(UserContext);
+	const { user } = useContext(UserContext);
 
-    return <div></div>;
+	return <div></div>;
 }
 
 export default PhotoLibrary;

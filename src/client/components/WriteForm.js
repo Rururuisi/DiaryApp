@@ -8,7 +8,7 @@ import { styled } from "@mui/system";
 import MoodSelector from "./MoodSelector";
 import ImageUploader from "./ImageUploader";
 import ImageToggleFullScreen from "./ImageToggleFullScreen";
-import { UserContext } from "../utils/UserContextProvider";
+import { UserContext } from "../contexts/UserContextProvider";
 import { createDiary, updateDiary } from "../utils/fetchData";
 import {
 	weathers,

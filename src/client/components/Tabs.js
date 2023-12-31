@@ -15,75 +15,74 @@ import Calendar from "../tabs/Calendar";
 import Account from "../tabs/Account";
 
 const StyledTab = styled(Tab)({
-    minWidth: 0,
-    height: 60,
+	minWidth: 0,
+	height: 60,
 });
 
 function Tabs() {
-    const [value, setValue] = useState("timeline");
+	const [value, setValue] = useState("timeline");
 
-    const handleChange = (evt, newValue) => {
-        setValue(newValue);
-    };
+	const handleChange = (evt, newValue) => {
+		setValue(newValue);
+	};
 
-    return (
-        <TabContext className="TabContext" value={value}>
-            <TabList
-                sx={{
-                    zIndex: 1,
-                    backgroundColor: (theme) => theme.palette.ternary.main,
-                    "& .MuiSvgIcon-root": {
-                        color: (theme) => theme.palette.primary.main,
-                        fontSize: "1.5rem",
-                    },
-                    "& .Mui-selected": {
-                        "& .MuiSvgIcon-root": {
-                            color: (theme) => theme.palette.primary.dark,
-                            fontSize: "2.25rem",
-                        },
-                    },
-                }}
-                className="TabList"
-                indicatorColor="none"
-                onChange={handleChange}
-                aria-label="lab API tabs example"
-            >
-                <StyledTab
-                    className="Tab"
-                    label={<LeaderboardRoundedIcon />}
-                    value="timeline"
-                />
-                <StyledTab
-                    className="Tab"
-                    label={<AutoStoriesIcon />}
-                    value="diary"
-                />
-                <i className="Tab"></i>
-                <StyledTab
-                    className="Tab"
-                    label={<CalendarMonthIcon />}
-                    value="calendar"
-                />
-                <StyledTab
-                    className="Tab"
-                    label={<AccountCircleIcon />}
-                    value="account"
-                />
-            </TabList>
-            <TabPanel value="timeline">
-                <Dashboard />
-            </TabPanel>
-            <TabPanel sx={{ padding: "24px 0" }} value="diary">
-                <Diary />
-            </TabPanel>
-            <TabPanel value="calendar">
-                <Calendar />
-            </TabPanel>
-            <TabPanel sx={{ padding: "0 0 20px 0" }} value="account">
-                <Account />
-            </TabPanel>
-        </TabContext>
-    );
+	return (
+		<TabContext className='TabContext' value={value}>
+			<TabList
+				sx={{
+					zIndex: 1,
+					backgroundColor: (theme) => theme.palette.ternary.main,
+					"& .MuiSvgIcon-root": {
+						color: (theme) => theme.palette.primary.main,
+						fontSize: "1.5rem",
+					},
+					"& .Mui-selected": {
+						"& .MuiSvgIcon-root": {
+							color: (theme) => theme.palette.primary.dark,
+							fontSize: "2.25rem",
+						},
+					},
+				}}
+				className='TabList'
+				indicatorColor='none'
+				onChange={handleChange}
+				aria-label='lab API tabs example'>
+				<StyledTab
+					className='Tab'
+					label={<LeaderboardRoundedIcon />}
+					value='timeline'
+				/>
+				<StyledTab
+					className='Tab'
+					label={<AutoStoriesIcon />}
+					value='diary'
+				/>
+				<i className='Tab'></i>
+				<StyledTab
+					className='Tab'
+					label={<CalendarMonthIcon />}
+					value='calendar'
+				/>
+				<StyledTab
+					className='Tab'
+					label={<AccountCircleIcon />}
+					value='account'
+				/>
+			</TabList>
+			<TabPanel value='timeline'>
+				<Dashboard />
+			</TabPanel>
+			<TabPanel sx={{ padding: "24px 0" }} value='diary'>
+				<Diary />
+			</TabPanel>
+			<TabPanel value='calendar'>
+				<Calendar />
+			</TabPanel>
+			<TabPanel sx={{ padding: "0 0 20px 0" }} value='account'>
+				<Account />
+			</TabPanel>
+		</TabContext>
+	);
 }
 
 export default Tabs;
