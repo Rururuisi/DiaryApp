@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import { UserContext } from "../contexts/UserContextProvider";
-import { useCalendarState } from "@mui/x-date-pickers/internals";
 
 const imageUrl =
 	"https://res.cloudinary.com/dbcxqmkq0/image/upload/v1692071907/DiaryAppAssets/profileBG_fhodas.jpg";
@@ -28,6 +26,7 @@ export default function Profile() {
 					width: 140,
 					height: 140,
 					border: "4px solid #eee",
+					cursor: "pointer",
 				}}
 				alt='avatar'
 				src={avatar}

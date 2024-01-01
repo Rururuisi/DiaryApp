@@ -72,6 +72,7 @@ function ServerDay(props) {
 	);
 }
 
+// get all diaries for a specific date, so when you click on a date on the Calendar, it will filter out all diaries for that date
 const getDiariesOnDate = (diaries, { year, month, date }) => {
 	return diaries.filter(
 		(diary) =>
@@ -81,6 +82,7 @@ const getDiariesOnDate = (diaries, { year, month, date }) => {
 	);
 };
 
+// get all date that have diaries of a specific month so thet can be used to add a badge for the date
 const setBadgeOnMonth = (diaries, { year, month }) => {
 	const days = [];
 	const diariesOnMonth = diaries.filter(
